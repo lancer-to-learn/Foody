@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FoodInfoFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/btn_order2"
+            android:layout_width="wrap_content"
+            android:layout_height="74dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="135dp"
+            android:layout_marginTop="228dp"
+            android:layout_marginEnd="135dp"
+            android:layout_marginBottom="12dp"
+            android:backgroundTint="#f52d56"
+            android:text="Đặt món"
+            app:icon="@drawable/ic_bx_cart_2" />
+
+        <ImageView
+            android:id="@+id/img_food"
+            android:layout_width="match_parent"
+            android:layout_height="352dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="4dp"
+            app:srcCompat="@drawable/kimchi" />
+
+        <TextView
+            android:id="@+id/txt_food_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/img_food"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="11dp"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/abril_fatface"
+            android:text="Kim Chi"
+            android:textColor="@color/black"
+            android:textSize="27sp"
+            android:textStyle="bold"
+            />
+
+        <TextView
+            android:id="@+id/txt_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/divider2"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="17dp"
+            android:layout_marginEnd="210dp"
+            android:fontFamily="@font/abril_fatface"
+            android:text="Giá: 20000 VND"
+            android:textColor="#9B9B9B"
+            android:textSize="22sp"
+            android:textStyle="normal" />
+
+        <TextView
+            android:id="@+id/txt_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/divider3"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="13dp"
+            android:fontFamily="@font/abril_fatface"
+            android:text="Số lượng:"
+            android:textColor="#9B9B9B"
+            android:textSize="22sp"
+            android:textStyle="normal" />
+
+        <TextView
+            android:id="@+id/txt_quantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/divider3"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="13dp"
+            android:layout_toEndOf="@+id/txt_text"
+            android:layout_toRightOf="@id/txt_text"
+            android:fontFamily="@font/abril_fatface"
+            android:text="1"
+            android:textColor="#9B9B9B"
+            android:textSize="22sp"
+            android:textStyle="normal" />
+
+        <TextView
+            android:id="@+id/txt_text1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/divider4"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="13dp"
+            android:layout_toRightOf="@id/txt_text"
+            android:fontFamily="@font/abril_fatface"
+            android:text="Tổng: "
+            android:textColor="@color/black"
+            android:textSize="25sp"
+            android:textStyle="normal" />
+
+        <TextView
+            android:id="@+id/txt_total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/divider4"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="235dp"
+            android:layout_marginLeft="140dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginEnd="5dp"
+            android:layout_toRightOf="@id/txt_text1"
+            android:fontFamily="@font/abril_fatface"
+            android:text="20000 VND "
+            android:textColor="@color/black"
+            android:textSize="25sp"
+            android:textStyle="normal" />
+
+        <Button
+            android:id="@+id/btn_add"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/divider3"
+            android:layout_alignParentEnd="true"
+            android:backgroundTint="#f52d56"
+            android:text=""
+            android:textSize="20sp"
+            app:icon="@android:drawable/ic_input_add" />
+
+        <Button
+            android:id="@+id/btn_sub"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/divider3"
+            android:layout_toStartOf="@+id/btn_add"
+            android:layout_toLeftOf="@id/btn_add"
+            android:layout_toRightOf="@id/txt_quantity"
+            android:backgroundTint="@color/material_dynamic_neutral50"
+            android:textAlignment="center"
+            app:icon="@android:drawable/button_onoff_indicator_on" />
+
+        <View
+            android:id="@+id/divider2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/txt_food_name"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="16dp"
+            android:background="?android:attr/listDivider" />
+
+        <View
+            android:id="@+id/divider3"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/txt_price"
+            android:layout_alignParentStart="true"
+
+            android:layout_alignParentEnd="true"
+
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="1dp"
+            android:background="?android:attr/listDivider" />
+
+        <View
+            android:id="@+id/divider4"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/txt_quantity"
+            android:layout_alignParentStart="true"
+
+            android:layout_alignParentEnd="true"
+
+            android:layout_marginStart="-1dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="1dp"
+            android:background="?android:attr/listDivider" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_below="@+id/img_food"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="6dp"
+            android:layout_toEndOf="@+id/txt_star"
+            app:srcCompat="@drawable/ic_mdi_star_rate" />
+
+        <TextView
+            android:id="@+id/txt_star"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/img_food"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="213dp"
+            android:layout_marginTop="11dp"
+            android:layout_marginBottom="335dp"
+            android:layout_toEndOf="@+id/txt_food_name"
+            android:text="4.1"
+            android:textSize="20sp" />
+
+
+    </RelativeLayout>
+
+</FrameLayout>

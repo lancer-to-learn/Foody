@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/drawable/ic_bx_cart_2.xml" value="0.1815" />
+        <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/drawable/ic_mdi_star_rate.xml" value="0.1815" />
+        <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/drawable/search_bg.xml" value="0.1815" />
+        <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/drawable/ship_bg.xml" value="0.1815" />
+        <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/drawable/time_bg.xml" value="0.1815" />
+        <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/font/abril_fatface.xml" value="0.20572916666666666" />
+        <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/layout/activity_main.xml" value="0.16145833333333334" />
+        <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/layout/activity_menu.xml" value="0.17552083333333332" />
+        <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/layout/category_recycle.xml" value="1.2035714285714285" />
+        <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/layout/comment.xml" value="0.17552083333333332" />
+        <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/layout/comment_activity.xml" value="0.17552083333333332" />
+        <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/layout/customer_infor.xml" value="0.17552083333333332" />
+        <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/layout/food.xml" value="0.17552083333333332" />
+        <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/layout/food_activity.xml" value="0.17552083333333332" />
+        <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/layout/fragment_customer_info.xml" value="0.16145833333333334" />
+        <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/layout/fragment_food_info.xml" value="0.17552083333333332" />
+        <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/layout/history_activity.xml" value="0.17552083333333332" />
+        <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/layout/home_activity.xml" value="0.17552083333333332" />
+        <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/layout/list_home_activity.xml" value="0.17552083333333332" />
+        <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/layout/login_activity.xml" value="0.17552083333333332" />
+        <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/layout/order.xml" value="0.3333333333333333" />
+        <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/layout/order_activity.xml" value="0.14666666666666667" />
+        <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/layout/order_infor.xml" value="0.17552083333333332" />
+        <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/layout/recommended_recycle.xml" value="0.4466666666666667" />
+        <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/layout/restaurant.xml" value="0.17552083333333332" />
+        <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/layout/restaurant_near.xml" value="0.17552083333333332" />
+        <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/layout/search_activity.xml" value="0.17552083333333332" />
+        <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/layout/signup_activity.xml" value="0.17552083333333332" />
+        <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/menu/admin_bottom_menu.xml" value="0.17552083333333332" />
+        <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/menu/menu.xml" value="0.1" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
