@@ -17,9 +17,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+import hcmute.docaominhchi19110331.foody_nhom33.Activity.NoticeActivity;
+
 public class FoodActivity extends AppCompatActivity {
 
     Button btn_order;
+    ImageView img_home, img_history, img_profile, img_notice;
     RecyclerView in_food_recycle;
     ImageView img_food, btn_comment, btn_save;
     TextView txt_food_name, txt_res_of_food, txt_description_food;
@@ -68,6 +71,38 @@ public class FoodActivity extends AppCompatActivity {
             }
         });
 
+        img_home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        img_history.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), HistoryActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        img_profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        img_notice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), NoticeActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
     }
 
@@ -93,6 +128,10 @@ public class FoodActivity extends AppCompatActivity {
         txt_food_name = (TextView) findViewById(R.id.txt_name_food);
         txt_res_of_food = (TextView) findViewById(R.id.txt_res_of_food);
         txt_description_food = (TextView) findViewById(R.id.txt_description_food);
+        img_home = (ImageView) findViewById(R.id.home_icon);
+        img_history = (ImageView) findViewById(R.id.history_icon);
+        img_profile = (ImageView) findViewById(R.id.profile_icon);
+        img_notice = (ImageView) findViewById(R.id.img_notice);
 
         commentList = new ArrayList<>();
         in_food_list = new ArrayList<>();

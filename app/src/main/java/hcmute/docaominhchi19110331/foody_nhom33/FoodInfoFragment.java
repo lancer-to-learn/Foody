@@ -16,7 +16,7 @@ import android.widget.TextView;
 public class FoodInfoFragment extends Fragment {
 
     ImageView img_food;
-    TextView txt_name_food, txt_price;
+    TextView txt_name_food, txt_price, txt_star;
     TextView txt_quantity;
     Button btn_order, btn_add, btn_sub;
     View view;
@@ -39,6 +39,7 @@ public class FoodInfoFragment extends Fragment {
 
     private void map() {
         img_food = (ImageView) view.findViewById(R.id.img_food);
+        txt_star = (TextView) view.findViewById(R.id.txt_star);
         btn_add = (Button) view.findViewById(R.id.btn_add);
         btn_sub = (Button) view.findViewById(R.id.btn_sub);
         txt_name_food = (TextView) view.findViewById(R.id.txt_food_name);

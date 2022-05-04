@@ -16,6 +16,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
 
+import hcmute.docaominhchi19110331.foody_nhom33.Activity.NoticeActivity;
 import hcmute.docaominhchi19110331.foody_nhom33.ViewPagerAdapter.OrderPagerAdapter;
 
 public class OrderActivity extends AppCompatActivity {
@@ -25,6 +26,7 @@ public class OrderActivity extends AppCompatActivity {
     Button btn_order;*/
     private TabLayout mTablayout;
     private ViewPager viewPager;
+    ImageView img_home, img_history, img_profile, img_notice;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -34,10 +36,46 @@ public class OrderActivity extends AppCompatActivity {
         getLayoutInflater().inflate(R.layout.order_activity, container);
         mTablayout = (TabLayout) findViewById(R.id.tab_layout);
         viewPager = (ViewPager) findViewById(R.id.view_pager);
+        img_home = (ImageView) findViewById(R.id.home_icon);
+        img_history = (ImageView) findViewById(R.id.history_icon);
+        img_profile = (ImageView) findViewById(R.id.profile_icon);
+        img_notice = (ImageView) findViewById(R.id.img_notice);
         OrderPagerAdapter adapter = new OrderPagerAdapter(getSupportFragmentManager(), FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         viewPager.setAdapter(adapter);
 
         mTablayout.setupWithViewPager(viewPager);
+
+        img_home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        img_history.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), HistoryActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        img_profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        img_notice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), NoticeActivity.class);
+                startActivity(intent);
+            }
+        });
 
         //map();
 

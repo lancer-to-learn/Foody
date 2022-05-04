@@ -1,41 +1,52 @@
-package hcmute.docaominhchi19110331.foody_nhom33;
+package hcmute.docaominhchi19110331.foody_nhom33.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import hcmute.docaominhchi19110331.foody_nhom33.Activity.NoticeActivity;
+import java.util.ArrayList;
+import java.util.List;
 
-public class LoginActivity extends AppCompatActivity {
-    EditText edt_email, edt_pass;
+import hcmute.docaominhchi19110331.foody_nhom33.Adapter.NoticeAdapter;
+import hcmute.docaominhchi19110331.foody_nhom33.Comment;
+import hcmute.docaominhchi19110331.foody_nhom33.CommentActivity;
+import hcmute.docaominhchi19110331.foody_nhom33.CommentAdapter;
+import hcmute.docaominhchi19110331.foody_nhom33.Food;
+import hcmute.docaominhchi19110331.foody_nhom33.HistoryActivity;
+import hcmute.docaominhchi19110331.foody_nhom33.LoginActivity;
+import hcmute.docaominhchi19110331.foody_nhom33.MainActivity;
+import hcmute.docaominhchi19110331.foody_nhom33.Model.Notice;
+import hcmute.docaominhchi19110331.foody_nhom33.OrderActivity;
+import hcmute.docaominhchi19110331.foody_nhom33.R;
+import hcmute.docaominhchi19110331.foody_nhom33.RecommendedAdapter;
+import hcmute.docaominhchi19110331.foody_nhom33.User;
+
+public class NoticeActivity extends AppCompatActivity {
+    ListView lv_notice;
     ImageView img_home, img_history, img_profile, img_notice;
-    Button btn_login;
-    TextView txt_forgot, txt_signup;
+    List<Notice> list;
+    NoticeAdapter adapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
         ScrollView container = (ScrollView) findViewById(R.id.container);
-        getLayoutInflater().inflate(R.layout.login_activity, container);
-
+        getLayoutInflater().inflate(R.layout.notice_activity, container);
         map();
-
-        txt_signup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), SignUpActivity.class);
-                startActivity(intent);
-            }
-        });
+        adapter = new NoticeAdapter(this, R.layout.notice, list);
+        lv_notice.setAdapter(adapter);
 
         img_home.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,17 +80,24 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+
+
     }
 
-    public void map() {
-        edt_email = (EditText) findViewById(R.id.edt_email);
-        edt_pass = (EditText) findViewById(R.id.edt_password);
-        btn_login = (Button) findViewById(R.id.btn_login);
-        txt_forgot = (TextView) findViewById(R.id.txt_forgot);
-        txt_signup = (TextView) findViewById(R.id.txt_signup);
+    private void map() {
         img_home = (ImageView) findViewById(R.id.home_icon);
         img_history = (ImageView) findViewById(R.id.history_icon);
         img_profile = (ImageView) findViewById(R.id.profile_icon);
         img_notice = (ImageView) findViewById(R.id.img_notice);
+        lv_notice = (ListView) findViewById(R.id.lv_notice);
+
+        list = new ArrayList<>();
+
+
+        list.add(new Notice("Bạn đã đặt thành công món Kim Chi", "10:00 AM 5/3/2022"));
+        list.add(new Notice("Bạn đã đặt thành công món BeefSteak", "4:20 PM 5/3/2022"));
+
     }
+
 }
+

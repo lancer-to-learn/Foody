@@ -60,20 +60,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/category_recycler"
-                android:text="Quán được đề cử"
                 android:padding="10dp"
+                android:text="Quán được đề cử"
                 android:textSize="22sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
+
 
 
             <ListView
                 android:id="@+id/lv_restaurant"
                 android:layout_width="match_parent"
-                android:layout_height="1000dp"
+                android:layout_height="1051dp"
                 android:layout_below="@id/txt_ds"
                 android:layout_alignParentEnd="true"
                 android:layout_marginTop="2dp"
-                android:layout_marginEnd="2dp">
+                android:layout_marginEnd="0dp">
 
 
             </ListView>

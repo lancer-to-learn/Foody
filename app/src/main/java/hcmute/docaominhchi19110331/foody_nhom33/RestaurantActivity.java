@@ -16,11 +16,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+import hcmute.docaominhchi19110331.foody_nhom33.Activity.NoticeActivity;
 import hcmute.docaominhchi19110331.foody_nhom33.Adapter.NearRestaurantAdapter;
 
 public class RestaurantActivity extends AppCompatActivity {
 
     ImageView img_restaurant;
+    ImageView img_home, img_history, img_profile, img_notice;
     TextView txt_name, txt_address;
     ListView lv_food;
     FoodAdapter adapter;
@@ -61,6 +63,38 @@ public class RestaurantActivity extends AppCompatActivity {
             }
         });
 
+        img_home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        img_history.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), HistoryActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        img_profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        img_notice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), NoticeActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
     }
 
@@ -70,6 +104,10 @@ public class RestaurantActivity extends AppCompatActivity {
         txt_name = (TextView) findViewById(R.id.txt_name_restaurant);
         lv_food = (ListView) findViewById(R.id.lv_comment);
         txt_address = (TextView) findViewById(R.id.txt_restaurant_address);
+        img_home = (ImageView) findViewById(R.id.home_icon);
+        img_history = (ImageView) findViewById(R.id.history_icon);
+        img_profile = (ImageView) findViewById(R.id.profile_icon);
+        img_notice = (ImageView) findViewById(R.id.img_notice);
         nearResRecycle = (RecyclerView) findViewById(R.id.near_restaurant_recycler);
         listFood = new ArrayList<>();
         nearList = new ArrayList<>();

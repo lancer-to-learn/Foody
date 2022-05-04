@@ -47,8 +47,7 @@
             android:text="Kim Chi"
             android:textColor="@color/black"
             android:textSize="27sp"
-            android:textStyle="bold"
-            />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/txt_price"
@@ -191,13 +190,13 @@
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="wrap_content"
-            android:layout_height="35dp"
+            android:layout_width="10dp"
+            android:layout_height="30dp"
             android:layout_below="@+id/img_food"
             android:layout_alignParentEnd="true"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="6dp"
-            android:layout_marginEnd="6dp"
+            android:layout_marginStart="35dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="10dp"
             android:layout_toEndOf="@+id/txt_star"
             app:srcCompat="@drawable/ic_mdi_star_rate" />
 
@@ -207,7 +206,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/img_food"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="213dp"
+            android:layout_marginStart="200dp"
             android:layout_marginTop="11dp"
             android:layout_marginBottom="335dp"
             android:layout_toEndOf="@+id/txt_food_name"

@@ -16,10 +16,12 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
 
+import hcmute.docaominhchi19110331.foody_nhom33.Activity.NoticeActivity;
+
 public class MainActivity extends AppCompatActivity {
 
     EditText edt_search;
-    ImageView img_home, img_history, img_profile;
+    ImageView img_home, img_history, img_profile, img_notice;
     RecyclerView recommended;
     ListView lv_restaurant;
     ArrayList<Restaurant> restaurants;
@@ -79,6 +81,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        img_notice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), NoticeActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     private void Map() {
@@ -87,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
         img_home = (ImageView) findViewById(R.id.home_icon);
         img_history = (ImageView) findViewById(R.id.history_icon);
         img_profile = (ImageView) findViewById(R.id.profile_icon);
+        img_notice = (ImageView) findViewById(R.id.img_notice);
         recommended = (RecyclerView) findViewById(R.id.category_recycler);
         restaurants = new ArrayList<>();
         restaurants2 = new ArrayList<>();
