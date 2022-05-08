@@ -14,9 +14,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 
+import hcmute.docaominhchi19110331.foody_nhom33.Activity.NoticeActivity;
+
 public class HistoryActivity extends AppCompatActivity {
     ListView lv_order;
-    ImageView img_home, img_history, img_profile;
+    ImageView img_home, img_history, img_profile, img_notice;
     Button btn_order;
     ArrayList<Order> orders;
     OrderAdapter adapter;
@@ -73,8 +75,13 @@ public class HistoryActivity extends AppCompatActivity {
             }
         });
 
-
-
+        img_notice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), NoticeActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 
@@ -84,6 +91,13 @@ public class HistoryActivity extends AppCompatActivity {
         img_home = (ImageView) findViewById(R.id.home_icon);
         img_history = (ImageView) findViewById(R.id.history_icon);
         img_profile = (ImageView) findViewById(R.id.profile_icon);
+        img_notice = (ImageView) findViewById(R.id.img_notice);
+
+        //Set icon for button in menu
+        img_home.setImageResource(R.drawable.home_icon);
+        img_history.setImageResource(R.drawable.history_active_icon);
+        img_notice.setImageResource(R.drawable.icon_notice);
+        img_profile.setImageResource(R.drawable.profile_icon);
         orders = new ArrayList<>();
 
         orders.add(new Order(new Food("BeefSteak", "500000", R.drawable.beefsteak), 1));

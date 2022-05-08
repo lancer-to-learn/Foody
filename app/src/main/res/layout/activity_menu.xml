@@ -79,14 +79,14 @@
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>-->
 
-    <ScrollView
+    <hcmute.docaominhchi19110331.foody_nhom33.VerticalScrollview
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_centerVertical="true"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="40dp"
         app:layout_constraintBottom_toTopOf="@+id/menu"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -94,7 +94,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
 
-    </ScrollView>
+    </hcmute.docaominhchi19110331.foody_nhom33.VerticalScrollview>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/menu"
@@ -113,7 +113,7 @@
             android:layout_width="59dp"
             android:layout_height="58dp"
             android:padding="10dp"
-            android:src="@drawable/home_icon"
+            android:src="@drawable/ic_home"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -139,7 +139,7 @@
             app:layout_constraintEnd_toStartOf="@+id/profile_icon"
             app:layout_constraintLeft_toRightOf="@id/history_icon"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/icon_notice" />
+            app:srcCompat="@drawable/ic_notification" />
 
         <ImageView
             android:id="@+id/profile_icon"

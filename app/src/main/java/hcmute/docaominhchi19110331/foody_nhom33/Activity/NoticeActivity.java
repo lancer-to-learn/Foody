@@ -91,6 +91,12 @@ public class NoticeActivity extends AppCompatActivity {
         img_notice = (ImageView) findViewById(R.id.img_notice);
         lv_notice = (ListView) findViewById(R.id.lv_notice);
 
+        //Set icon for button in menu
+        img_home.setImageResource(R.drawable.home_icon);
+        img_history.setImageResource(R.drawable.history_icon);
+        img_notice.setImageResource(R.drawable.notice_active_icon);
+        img_profile.setImageResource(R.drawable.profile_icon);
+
         list = new ArrayList<>();
 
 

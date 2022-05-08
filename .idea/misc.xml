@@ -3,8 +3,26 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/drawable-v24/ic_account.xml" value="0.1815" />
+        <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/drawable-v24/ic_home.xml" value="0.1815" />
+        <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/drawable-v24/ic_message.xml" value="0.1815" />
+        <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/drawable-v24/ic_notification.xml" value="0.1815" />
+        <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/drawable/ic_account.xml" value="0.1815" />
         <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/drawable/ic_bx_cart_2.xml" value="0.1815" />
+        <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/drawable/ic_email_icon.xml" value="0.1815" />
+        <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/drawable/ic_group_400.xml" value="0.1815" />
+        <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/drawable/ic_group_401.xml" value="0.1815" />
+        <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/drawable/ic_heart.xml" value="0.1815" />
+        <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/drawable/ic_keyboard_arrow_left_black_24dp.xml" value="0.1815" />
+        <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1815" />
+        <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/drawable/ic_location_icon.xml" value="0.1815" />
+        <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/drawable/ic_location_on_black_24dp.xml" value="0.1815" />
         <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/drawable/ic_mdi_star_rate.xml" value="0.1815" />
+        <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/drawable/ic_notification.xml" value="0.1815" />
+        <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/drawable/ic_password_icon.xml" value="0.1815" />
+        <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/drawable/ic_phone_icon.xml" value="0.1815" />
+        <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/drawable/ic_profile_icon.xml" value="0.1815" />
+        <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/drawable/ic_search_black_24dp.xml" value="0.1815" />
         <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/drawable/layout_bg.xml" value="0.1815" />
         <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/drawable/search_bg.xml" value="0.1815" />
         <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/drawable/ship_bg.xml" value="0.1815" />
@@ -17,11 +35,11 @@
         <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/layout/comment_activity.xml" value="0.17552083333333332" />
         <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/layout/customer_infor.xml" value="0.17552083333333332" />
         <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/layout/food.xml" value="0.17552083333333332" />
-        <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/layout/food_activity.xml" value="0.17552083333333332" />
+        <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/layout/food_activity.xml" value="0.10666666666666667" />
         <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/layout/fragment_customer_info.xml" value="0.16145833333333334" />
         <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/layout/fragment_food_info.xml" value="0.17552083333333332" />
         <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/layout/history_activity.xml" value="0.17552083333333332" />
-        <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/layout/home_activity.xml" value="0.17552083333333332" />
+        <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/layout/home_activity.xml" value="0.10017835909631391" />
         <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/layout/list_home_activity.xml" value="0.17552083333333332" />
         <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/layout/login_activity.xml" value="0.17552083333333332" />
         <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/layout/notice.xml" value="0.17552083333333332" />
@@ -29,9 +47,11 @@
         <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/layout/order.xml" value="0.3333333333333333" />
         <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/layout/order_activity.xml" value="0.14666666666666667" />
         <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/layout/order_infor.xml" value="0.17552083333333332" />
+        <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/layout/profile_activity.xml" value="0.17552083333333332" />
         <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/layout/recommended_recycle.xml" value="0.4466666666666667" />
         <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/layout/restaurant.xml" value="0.17552083333333332" />
         <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/layout/restaurant_near.xml" value="0.17552083333333332" />
+        <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/layout/search.xml" value="0.17552083333333332" />
         <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/layout/search_activity.xml" value="0.17552083333333332" />
         <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/layout/signup_activity.xml" value="0.17552083333333332" />
         <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/menu/admin_bottom_menu.xml" value="0.17552083333333332" />

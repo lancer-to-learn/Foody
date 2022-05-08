@@ -36,7 +36,14 @@
 
         <activity
             android:name=".Activity.NoticeActivity">
+        </activity>
 
+        <activity
+            android:name=".Activity.ProfileActivity">
+        </activity>
+
+        <activity
+            android:name=".Activity.SearchActivity">
         </activity>
 
         <activity

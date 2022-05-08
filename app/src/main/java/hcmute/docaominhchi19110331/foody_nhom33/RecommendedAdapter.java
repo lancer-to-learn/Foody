@@ -2,6 +2,7 @@ package hcmute.docaominhchi19110331.foody_nhom33;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,18 +43,18 @@ public class RecommendedAdapter extends RecyclerView.Adapter<RecommendedAdapter.
 
         //Glide.with(context).load(recommendedList.get(position).getImageUrl()).into(holder.recommendedImage);
 
-        /*holder.itemView.setOnClickListener(new View.OnClickListener() {
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(context, FoodDetails.class);
+                Intent i = new Intent(context, FoodActivity.class);
                 i.putExtra("name", recommendedList.get(position).getName());
                 i.putExtra("price", recommendedList.get(position).getPrice());
-                i.putExtra("rating", recommendedList.get(position).getRating());
-                i.putExtra("image", recommendedList.get(position).getImageUrl());
+                i.putExtra("rating", 4.1);
+                i.putExtra("image", recommendedList.get(position).getImage());
 
                 context.startActivity(i);
             }
-        });*/
+        });
 
     }
 

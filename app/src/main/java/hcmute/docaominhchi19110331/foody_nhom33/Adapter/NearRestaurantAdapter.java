@@ -2,6 +2,7 @@ package hcmute.docaominhchi19110331.foody_nhom33.Adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,8 +14,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+import hcmute.docaominhchi19110331.foody_nhom33.FoodActivity;
 import hcmute.docaominhchi19110331.foody_nhom33.R;
 import hcmute.docaominhchi19110331.foody_nhom33.Restaurant;
+import hcmute.docaominhchi19110331.foody_nhom33.RestaurantActivity;
 
 public class NearRestaurantAdapter extends RecyclerView.Adapter<NearRestaurantAdapter.NearRestaurantViewHolder>{
 
@@ -34,11 +37,23 @@ public class NearRestaurantAdapter extends RecyclerView.Adapter<NearRestaurantAd
     }
 
     @Override
-    public void onBindViewHolder(@NonNull NearRestaurantViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull NearRestaurantViewHolder holder, @SuppressLint("RecyclerView")int position) {
         holder.txt_nearRestaurant_name.setText(nearList.get(position).getName());
         holder.txt_nearRestaurant_open.setText("Open 8:00 AM");
         holder.txt_nearRestaurant_address.setText(nearList.get(position).getAddress());
         holder.img_nearRestaurant.setImageResource(nearList.get(position).getImage());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(context, RestaurantActivity.class);
+                i.putExtra("name", nearList.get(position).getName());
+                i.putExtra("address", nearList.get(position).getAddress());
+                i.putExtra("image", nearList.get(position).getImage());
+
+                context.startActivity(i);
+            }
+        });
     }
 
 

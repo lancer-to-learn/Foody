@@ -13,6 +13,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import hcmute.docaominhchi19110331.foody_nhom33.Activity.NoticeActivity;
+import hcmute.docaominhchi19110331.foody_nhom33.Activity.ProfileActivity;
 
 public class LoginActivity extends AppCompatActivity {
     EditText edt_email, edt_pass;
@@ -69,6 +70,14 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        btn_login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     public void map() {
@@ -81,5 +90,10 @@ public class LoginActivity extends AppCompatActivity {
         img_history = (ImageView) findViewById(R.id.history_icon);
         img_profile = (ImageView) findViewById(R.id.profile_icon);
         img_notice = (ImageView) findViewById(R.id.img_notice);
+        //Set icon for button in menu
+        img_home.setImageResource(R.drawable.home_icon);
+        img_history.setImageResource(R.drawable.history_icon);
+        img_notice.setImageResource(R.drawable.icon_notice);
+        img_profile.setImageResource(R.drawable.profile_active_icon);
     }
 }

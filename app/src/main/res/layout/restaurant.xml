@@ -39,7 +39,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/img_foody" />
 
-    <ScrollView
+    <hcmute.docaominhchi19110331.foody_nhom33.VerticalScrollview
         android:id="@+id/scv_mon"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -68,7 +68,7 @@
         </RelativeLayout>
 
 
-    </ScrollView>
+    </hcmute.docaominhchi19110331.foody_nhom33.VerticalScrollview>
 
 
     <TextView
@@ -153,11 +153,12 @@
         android:layout_height="wrap_content"
 
         android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8"/>
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
     <TextView
         android:id="@+id/textView8"
