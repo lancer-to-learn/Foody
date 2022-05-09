@@ -2,23 +2,22 @@ package hcmute.docaominhchi19110331.foody_nhom33.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ScrollView;
-import android.widget.Spinner;
+import android.widget.TextView;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+import hcmute.docaominhchi19110331.foody_nhom33.Adapter.NearRestaurantAdapter;
+import hcmute.docaominhchi19110331.foody_nhom33.Adapter.SavedRestaurantAdapter;
 import hcmute.docaominhchi19110331.foody_nhom33.Food;
 import hcmute.docaominhchi19110331.foody_nhom33.FoodActivity;
 import hcmute.docaominhchi19110331.foody_nhom33.FoodAdapter;
@@ -26,66 +25,46 @@ import hcmute.docaominhchi19110331.foody_nhom33.HistoryActivity;
 import hcmute.docaominhchi19110331.foody_nhom33.LoginActivity;
 import hcmute.docaominhchi19110331.foody_nhom33.MainActivity;
 import hcmute.docaominhchi19110331.foody_nhom33.R;
-import hcmute.docaominhchi19110331.foody_nhom33.RecommendedAdapter;
 import hcmute.docaominhchi19110331.foody_nhom33.Restaurant;
 import hcmute.docaominhchi19110331.foody_nhom33.RestaurantActivity;
-import hcmute.docaominhchi19110331.foody_nhom33.RestaurantAdapter;
 
-public class SearchActivity extends AppCompatActivity {
+public class SavedRestaurantActivity extends AppCompatActivity {
 
-    EditText edt_search;
-    Spinner spinner;
     ImageView img_home, img_history, img_profile, img_notice;
-    ListView lv_search;
-    ArrayList<Food> searchList;
-    ArrayList<String> spinList;
-    FoodAdapter adapter;
+    ListView lv_saved;
+    ArrayList<Restaurant> savedList;
+    SavedRestaurantAdapter adapter;
+    float rating = 4;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
         ScrollView container = (ScrollView) findViewById(R.id.container);
-        getLayoutInflater().inflate(R.layout.search, container);
+        getLayoutInflater().inflate(R.layout.saved_restaurant, container);
 
-        Map();
-        edt_search.requestFocus();
-        adapter = new FoodAdapter(this, R.layout.search_activity, searchList);
-        lv_search.setAdapter(adapter);
-        ArrayAdapter spinAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, spinList);
-        spinAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(spinAdapter);
+        map();
 
-        edt_search.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+        adapter = new SavedRestaurantAdapter(this, R.layout.restaurant_save, savedList);
 
-            }
+        lv_saved.setAdapter(adapter);
 
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
-        lv_search.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        lv_saved.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                int image = searchList.get(i).getImage();
-                String name = searchList.get(i).getName();
-                String address = searchList.get(i).getPrice();
-                Intent intent = new Intent(getApplicationContext(), FoodActivity.class);
-                intent.putExtra("image", image);
-                intent.putExtra("name", name);
-                intent.putExtra("address", address);
-                startActivity(intent);
+                int image = savedList.get(i).getImage();
+                String name = savedList.get(i).getName();
+                Intent intent1 = new Intent(getApplicationContext(), RestaurantActivity.class);
+
+                intent1.putExtra("name", name);
+                intent1.putExtra("image", image);
+                intent1.putExtra("address", savedList.get(i).getAddress());
+                intent1.putExtra("rating", rating);
+                intent1.putExtra("saved", true);
+                startActivity(intent1);
+
             }
         });
-
 
         img_home.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -119,25 +98,23 @@ public class SearchActivity extends AppCompatActivity {
             }
         });
 
+
     }
 
-    private void Map() {
-        edt_search = (EditText) findViewById(R.id.edt_search1);
-        lv_search = (ListView) findViewById(R.id.lv_search);
+
+    private void map() {
         img_home = (ImageView) findViewById(R.id.home_icon);
         img_history = (ImageView) findViewById(R.id.history_icon);
         img_profile = (ImageView) findViewById(R.id.profile_icon);
         img_notice = (ImageView) findViewById(R.id.img_notice);
-        spinner = (Spinner) findViewById(R.id.spinner1);
 
-        searchList = new ArrayList<>();
-        spinList = new ArrayList<>();
+        lv_saved = (ListView) findViewById(R.id.lv_saved_restaurant);
 
-//        searchList.add(new Food("Cơm gà", "20", R.drawable.asiafood2));
-//        searchList.add(new Food("Beef Steak", "50", R.drawable.beefsteak));
+        savedList = new ArrayList<>();
 
-
-        spinList.add("TP. HCM");
-        spinList.add("Q.1");
+        savedList.add(new Restaurant("Bún Chị Bảy", "123 Nguyễn Huệ", R.drawable.restaurant2));
+        savedList.add(new Restaurant("Cơm sườn bì chả", "456 Võ Văn Kiệt", R.drawable.restaurant1));
+        savedList.add(new Restaurant("Ăn vặt cô 3", "789 Võ Văn Ngân", R.drawable.restaurant));
     }
 }
+

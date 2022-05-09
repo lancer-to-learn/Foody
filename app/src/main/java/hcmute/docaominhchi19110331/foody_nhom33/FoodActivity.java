@@ -26,7 +26,7 @@ public class FoodActivity extends AppCompatActivity {
     Button btn_order;
     ImageView img_home, img_history, img_profile, img_notice;
     RecyclerView in_food_recycle;
-    ImageView img_food, btn_comment, btn_save;
+    ImageView img_food, btn_comment;
     TextView txt_food_name, txt_res_of_food, txt_description_food;
     ListView lv_comment;
     CommentAdapter adapter;
@@ -118,7 +118,6 @@ public class FoodActivity extends AppCompatActivity {
     private void map() {
         btn_comment = (ImageView) findViewById(R.id.btn_comment_and_rate);
         in_food_recycle = (RecyclerView) findViewById(R.id.in_food_recycle);
-        btn_save = (ImageView) findViewById(R.id.btn_save);
         btn_order = (Button) findViewById(R.id.btn_ordering);
         img_food = (ImageView) findViewById(R.id.img_foody);
         lv_comment = (ListView) findViewById(R.id.lv_comment);

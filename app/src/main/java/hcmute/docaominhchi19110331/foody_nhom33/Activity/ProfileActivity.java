@@ -76,6 +76,34 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
+        btn_infor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), UserInforActivity.class);
+                intent.putExtra("username", txt_username.getText().toString());
+                intent.putExtra("email", txt_email.getText().toString());
+                intent.putExtra("password", "123");
+                startActivity(intent);
+            }
+        });
+
+        btn_address.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), AddressInforActivity.class);
+                intent.putExtra("address", "123 Le Van Viet");
+                startActivity(intent);
+            }
+        });
+
+        btn_saved.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), SavedRestaurantActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     private void Map() {

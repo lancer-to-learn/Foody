@@ -43,6 +43,18 @@
         </activity>
 
         <activity
+            android:name=".Activity.AddressInforActivity">
+        </activity>
+
+        <activity
+            android:name=".Activity.UserInforActivity">
+        </activity>
+
+        <activity
+            android:name=".Activity.SavedRestaurantActivity">
+        </activity>
+
+        <activity
             android:name=".Activity.SearchActivity">
         </activity>
 

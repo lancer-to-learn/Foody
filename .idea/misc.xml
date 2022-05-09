@@ -24,6 +24,8 @@
         <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/drawable/ic_password_icon.xml" value="0.1815" />
         <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/drawable/ic_phone_icon.xml" value="0.1815" />
         <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/drawable/ic_profile_icon.xml" value="0.1815" />
+        <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/drawable/ic_rectangle_344.xml" value="0.1815" />
+        <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/drawable/ic_saved_icon.xml" value="0.1815" />
         <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/drawable/ic_search_black_24dp.xml" value="0.1815" />
         <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/drawable/layout_bg.xml" value="0.1815" />
         <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/drawable/search_bg.xml" value="0.1815" />
@@ -32,6 +34,7 @@
         <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/font/abril_fatface.xml" value="0.20572916666666666" />
         <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/layout/activity_main.xml" value="0.16145833333333334" />
         <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/layout/activity_menu.xml" value="0.17552083333333332" />
+        <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/layout/address_infor.xml" value="0.17552083333333332" />
         <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/layout/category_recycle.xml" value="1.2035714285714285" />
         <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/layout/comment.xml" value="0.17552083333333332" />
         <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/layout/comment_activity.xml" value="0.17552083333333332" />
@@ -53,9 +56,12 @@
         <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/layout/recommended_recycle.xml" value="0.4466666666666667" />
         <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/layout/restaurant.xml" value="0.17552083333333332" />
         <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/layout/restaurant_near.xml" value="0.17552083333333332" />
+        <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/layout/restaurant_save.xml" value="0.17552083333333332" />
+        <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/layout/saved_restaurant.xml" value="0.17552083333333332" />
         <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/layout/search.xml" value="0.17552083333333332" />
         <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/layout/search_activity.xml" value="0.17552083333333332" />
         <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/layout/signup_activity.xml" value="0.17552083333333332" />
+        <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/layout/user_infor.xml" value="0.1" />
         <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/menu/admin_bottom_menu.xml" value="0.17552083333333332" />
         <entry key="..\:/HK6/Foody_Nhom33/app/src/main/res/menu/menu.xml" value="0.1" />
       </map>
