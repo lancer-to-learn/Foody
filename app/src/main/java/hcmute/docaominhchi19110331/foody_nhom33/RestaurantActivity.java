@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RatingBar;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -21,9 +22,10 @@ import hcmute.docaominhchi19110331.foody_nhom33.Adapter.NearRestaurantAdapter;
 
 public class RestaurantActivity extends AppCompatActivity {
 
-    ImageView img_restaurant;
+    ImageView img_restaurant, img_saved;
     ImageView img_home, img_history, img_profile, img_notice;
     TextView txt_name, txt_address;
+    RatingBar rb;
     ListView lv_food;
     FoodAdapter adapter;
     ArrayList<Food> listFood;
@@ -95,6 +97,13 @@ public class RestaurantActivity extends AppCompatActivity {
             }
         });
 
+        img_saved.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                img_saved.setImageResource(R.drawable.ic_saved_icon);
+            }
+        });
+
 
     }
 
@@ -103,6 +112,8 @@ public class RestaurantActivity extends AppCompatActivity {
         img_restaurant = (ImageView) findViewById(R.id.img_foody);
         txt_name = (TextView) findViewById(R.id.txt_name_restaurant);
         lv_food = (ListView) findViewById(R.id.lv_comment);
+        rb = (RatingBar) findViewById(R.id.ratingBar3);
+        img_saved = (ImageView) findViewById(R.id.img_save_location);
         txt_address = (TextView) findViewById(R.id.txt_restaurant_address);
         img_home = (ImageView) findViewById(R.id.home_icon);
         img_history = (ImageView) findViewById(R.id.history_icon);
@@ -124,11 +135,18 @@ public class RestaurantActivity extends AppCompatActivity {
         String name = intent.getStringExtra("name");
         int image = intent.getIntExtra("image", 0);
         String address = intent.getStringExtra("address");
+        Float rating = intent.getFloatExtra("rating", 3);
+        Boolean saved = intent.getBooleanExtra("saved", false);
+        if (saved==true){
+            img_saved.setImageResource(R.drawable.ic_saved_icon);
+        }
+        else {
+            img_saved.setImageResource(R.drawable.ic_rectangle_344);
+        }
         txt_name.setText(name);
         img_restaurant.setImageResource(image);
         txt_address.setText(address);
-
-
+        rb.setRating(rating);
 
     }
 }

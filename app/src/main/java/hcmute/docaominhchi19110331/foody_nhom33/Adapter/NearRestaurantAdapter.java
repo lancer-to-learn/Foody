@@ -50,6 +50,7 @@ public class NearRestaurantAdapter extends RecyclerView.Adapter<NearRestaurantAd
                 i.putExtra("name", nearList.get(position).getName());
                 i.putExtra("address", nearList.get(position).getAddress());
                 i.putExtra("image", nearList.get(position).getImage());
+                i.putExtra("rating", 4);
 
                 context.startActivity(i);
             }

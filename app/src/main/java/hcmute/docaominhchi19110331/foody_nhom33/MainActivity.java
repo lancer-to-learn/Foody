@@ -78,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("name", name);
                 intent.putExtra("image", image);
                 intent.putExtra("address", address);
+                intent.putExtra("rating", 3);
                 startActivity(intent);
             }
         });
@@ -93,6 +94,7 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("name", name);
                 intent.putExtra("image", image);
                 intent.putExtra("address", address);
+                intent.putExtra("rating", 3);
                 startActivity(intent);
             }
         });

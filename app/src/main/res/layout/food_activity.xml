@@ -9,10 +9,9 @@
         android:id="@+id/btn_comment_and_rate"
         android:layout_width="55dp"
         android:layout_height="44dp"
-        android:layout_marginEnd="20dp"
-        android:text=""
+        android:layout_marginEnd="10dp"
         app:layout_constraintBottom_toBottomOf="@+id/rb_rate"
-        app:layout_constraintEnd_toStartOf="@+id/btn_save"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/rb_rate"
         app:srcCompat="@drawable/comment_icon" />
 
@@ -29,15 +28,6 @@
         app:layout_constraintBottom_toTopOf="@+id/divider9"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/divider8" />
-
-    <ImageView
-        android:id="@+id/btn_save"
-        android:layout_width="55dp"
-        android:layout_height="44dp"
-        app:layout_constraintBottom_toBottomOf="@+id/btn_comment_and_rate"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/btn_comment_and_rate"
-        app:srcCompat="@drawable/ic_rectangle_344" />
 
     <ImageView
         android:id="@+id/img_foody"
