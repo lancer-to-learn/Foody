@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 
 import hcmute.docaominhchi19110331.foody_nhom33.Activity.NoticeActivity;
+import hcmute.docaominhchi19110331.foody_nhom33.Activity.ProfileActivity;
 
 public class HistoryActivity extends AppCompatActivity {
     ListView lv_order;
@@ -70,8 +71,14 @@ public class HistoryActivity extends AppCompatActivity {
         img_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                startActivity(intent);
+                if (checkUser()){
+                    Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+                    startActivity(intent);
+                }
+                else {
+                    Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                    startActivity(intent);
+                }
             }
         });
 
@@ -102,5 +109,8 @@ public class HistoryActivity extends AppCompatActivity {
 
 //        orders.add(new Order(new Food("BeefSteak", "500000", R.drawable.beefsteak), 1));
 //        orders.add(new Order(new Food("Bread", "10000", R.drawable.bread), 1));
+    }
+    private boolean checkUser(){
+        return ((MyApplication) this.getApplication()).checkUser();
     }
 }

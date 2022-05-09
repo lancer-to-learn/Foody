@@ -20,6 +20,7 @@ import java.util.ArrayList;
 
 import hcmute.docaominhchi19110331.foody_nhom33.Activity.Database;
 import hcmute.docaominhchi19110331.foody_nhom33.Activity.NoticeActivity;
+import hcmute.docaominhchi19110331.foody_nhom33.Activity.ProfileActivity;
 
 public class FoodActivity extends AppCompatActivity {
 
@@ -53,20 +54,32 @@ public class FoodActivity extends AppCompatActivity {
         btn_comment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), CommentActivity.class);
-                startActivityForResult(intent, REQUEST_CODE);
+                if(checkUser()) {
+                    Intent intent = new Intent(getApplicationContext(), CommentActivity.class);
+                    intent.putExtra("id_food", id);
+                    intent.putExtra("id_user", getuserId());
+                    startActivityForResult(intent, REQUEST_CODE);
+                }
+                else{
+                    Toast.makeText(FoodActivity.this, "You have to login first", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
         btn_order.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), OrderActivity.class);
-                intent.putExtra("name", name_food);
-                intent.putExtra("image", image);
-                intent.putExtra("price", price);
-                intent.putExtra("res", res);
-                startActivity(intent);
+                if(checkUser()) {
+                    Intent intent = new Intent(getApplicationContext(), OrderActivity.class);
+                    intent.putExtra("name", name_food);
+                    intent.putExtra("image", image);
+                    intent.putExtra("price", price);
+                    intent.putExtra("res", res);
+                    startActivity(intent);
+                }
+                else{
+                    Toast.makeText(FoodActivity.this, "You have to login first", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -89,8 +102,14 @@ public class FoodActivity extends AppCompatActivity {
         img_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                startActivity(intent);
+                if (checkUser()){
+                    Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+                    startActivity(intent);
+                }
+                else {
+                    Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                    startActivity(intent);
+                }
             }
         });
 
@@ -105,14 +124,13 @@ public class FoodActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
-        if (requestCode == REQUEST_CODE && resultCode == RESULT_OK && data != null) {
-            String name = data.getStringExtra("name");
-            //txt_name.setText(name);
-            Toast.makeText(this, "Get", Toast.LENGTH_SHORT).show();
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK) {
+            Intent intent = getIntent();
+            finish();
+            startActivity(intent);
         }
 
-        super.onActivityResult(requestCode, resultCode, data);
     }
 
     private void map() {
@@ -191,5 +209,11 @@ public class FoodActivity extends AppCompatActivity {
         }
 
         adapter.notifyDataSetChanged();
+    }
+    private boolean checkUser(){
+        return ((MyApplication) this.getApplication()).checkUser();
+    }
+    private int getuserId(){
+        return ((MyApplication) this.getApplication()).getuserId();
     }
 }

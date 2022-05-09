@@ -25,6 +25,7 @@ import hcmute.docaominhchi19110331.foody_nhom33.FoodAdapter;
 import hcmute.docaominhchi19110331.foody_nhom33.HistoryActivity;
 import hcmute.docaominhchi19110331.foody_nhom33.LoginActivity;
 import hcmute.docaominhchi19110331.foody_nhom33.MainActivity;
+import hcmute.docaominhchi19110331.foody_nhom33.MyApplication;
 import hcmute.docaominhchi19110331.foody_nhom33.R;
 import hcmute.docaominhchi19110331.foody_nhom33.RecommendedAdapter;
 import hcmute.docaominhchi19110331.foody_nhom33.Restaurant;
@@ -106,8 +107,14 @@ public class SearchActivity extends AppCompatActivity {
         img_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                startActivity(intent);
+                if (checkUser()){
+                    Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+                    startActivity(intent);
+                }
+                else {
+                    Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                    startActivity(intent);
+                }
             }
         });
 
@@ -139,5 +146,8 @@ public class SearchActivity extends AppCompatActivity {
 
         spinList.add("TP. HCM");
         spinList.add("Q.1");
+    }
+    private boolean checkUser(){
+        return ((MyApplication) this.getApplication()).checkUser();
     }
 }

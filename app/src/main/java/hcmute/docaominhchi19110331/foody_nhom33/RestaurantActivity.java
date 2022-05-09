@@ -21,6 +21,7 @@ import java.util.ArrayList;
 
 import hcmute.docaominhchi19110331.foody_nhom33.Activity.Database;
 import hcmute.docaominhchi19110331.foody_nhom33.Activity.NoticeActivity;
+import hcmute.docaominhchi19110331.foody_nhom33.Activity.ProfileActivity;
 import hcmute.docaominhchi19110331.foody_nhom33.Adapter.NearRestaurantAdapter;
 
 public class RestaurantActivity extends AppCompatActivity {
@@ -86,8 +87,14 @@ public class RestaurantActivity extends AppCompatActivity {
         img_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                startActivity(intent);
+                if (checkUser()){
+                    Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+                    startActivity(intent);
+                }
+                else {
+                    Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                    startActivity(intent);
+                }
             }
         });
 
@@ -105,7 +112,6 @@ public class RestaurantActivity extends AppCompatActivity {
                 img_saved.setImageResource(R.drawable.ic_saved_icon);
             }
         });
-
 
     }
 
@@ -191,5 +197,8 @@ public class RestaurantActivity extends AppCompatActivity {
         txt_address.setText(address);
         rb.setRating(rating);
 
+    }
+    private boolean checkUser(){
+        return ((MyApplication) this.getApplication()).checkUser();
     }
 }

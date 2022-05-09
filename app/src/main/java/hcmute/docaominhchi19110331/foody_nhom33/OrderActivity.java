@@ -17,6 +17,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.google.android.material.tabs.TabLayout;
 
 import hcmute.docaominhchi19110331.foody_nhom33.Activity.NoticeActivity;
+import hcmute.docaominhchi19110331.foody_nhom33.Activity.ProfileActivity;
 import hcmute.docaominhchi19110331.foody_nhom33.ViewPagerAdapter.OrderPagerAdapter;
 
 public class OrderActivity extends AppCompatActivity {
@@ -64,8 +65,14 @@ public class OrderActivity extends AppCompatActivity {
         img_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                startActivity(intent);
+                if (checkUser()){
+                    Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+                    startActivity(intent);
+                }
+                else {
+                    Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                    startActivity(intent);
+                }
             }
         });
 
@@ -103,7 +110,9 @@ public class OrderActivity extends AppCompatActivity {
 
 
     }
-
+    private boolean checkUser(){
+        return ((MyApplication) this.getApplication()).checkUser();
+    }
     /*private void map() {
         img_food = (ImageView) findViewById(R.id.img_food);
         img_add = (ImageView) findViewById(R.id.img_add);

@@ -18,6 +18,7 @@ import hcmute.docaominhchi19110331.foody_nhom33.Adapter.SavedRestaurantAdapter;
 import hcmute.docaominhchi19110331.foody_nhom33.HistoryActivity;
 import hcmute.docaominhchi19110331.foody_nhom33.LoginActivity;
 import hcmute.docaominhchi19110331.foody_nhom33.MainActivity;
+import hcmute.docaominhchi19110331.foody_nhom33.MyApplication;
 import hcmute.docaominhchi19110331.foody_nhom33.R;
 import hcmute.docaominhchi19110331.foody_nhom33.Restaurant;
 import hcmute.docaominhchi19110331.foody_nhom33.RestaurantActivity;
@@ -57,8 +58,14 @@ public class UserInforActivity extends AppCompatActivity {
         img_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                startActivity(intent);
+                if (checkUser()){
+                    Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+                    startActivity(intent);
+                }
+                else {
+                    Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                    startActivity(intent);
+                }
             }
         });
 
@@ -91,5 +98,8 @@ public class UserInforActivity extends AppCompatActivity {
         edt_email.setText(email);
         edt_password.setText(password);
 
+    }
+    private boolean checkUser(){
+        return ((MyApplication) this.getApplication()).checkUser();
     }
 }

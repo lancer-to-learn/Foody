@@ -22,6 +22,7 @@ import java.util.List;
 
 import hcmute.docaominhchi19110331.foody_nhom33.Activity.Database;
 import hcmute.docaominhchi19110331.foody_nhom33.Activity.NoticeActivity;
+import hcmute.docaominhchi19110331.foody_nhom33.Activity.ProfileActivity;
 import hcmute.docaominhchi19110331.foody_nhom33.Activity.SearchActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -116,8 +117,14 @@ public class MainActivity extends AppCompatActivity {
         img_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                startActivity(intent);
+                if (checkUser()){
+                    Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+                    startActivity(intent);
+                }
+                else {
+                    Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                    startActivity(intent);
+                }
             }
         });
 
@@ -163,8 +170,8 @@ public class MainActivity extends AppCompatActivity {
         recommended.setLayoutManager(layoutManager);
 
         databaseInit();
-        dataDelete();
-        dataInsert();
+//        dataDelete();
+//        dataInsert();
 
         getdataRestaurants();
         getdataFoods();
@@ -300,5 +307,8 @@ public class MainActivity extends AppCompatActivity {
             recommededList.add(new Food(id, id_res, name, address,image));
         }
         recommendedAdapter.notifyDataSetChanged();
+    }
+    private boolean checkUser(){
+        return ((MyApplication) this.getApplication()).checkUser();
     }
 }
