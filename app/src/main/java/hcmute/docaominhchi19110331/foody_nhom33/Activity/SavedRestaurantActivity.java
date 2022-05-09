@@ -112,9 +112,9 @@ public class SavedRestaurantActivity extends AppCompatActivity {
 
         savedList = new ArrayList<>();
 
-        savedList.add(new Restaurant("Bún Chị Bảy", "123 Nguyễn Huệ", R.drawable.restaurant2));
-        savedList.add(new Restaurant("Cơm sườn bì chả", "456 Võ Văn Kiệt", R.drawable.restaurant1));
-        savedList.add(new Restaurant("Ăn vặt cô 3", "789 Võ Văn Ngân", R.drawable.restaurant));
+//        savedList.add(new Restaurant("Bún Chị Bảy", "123 Nguyễn Huệ", R.drawable.restaurant2));
+//        savedList.add(new Restaurant("Cơm sườn bì chả", "456 Võ Văn Kiệt", R.drawable.restaurant1));
+//        savedList.add(new Restaurant("Ăn vặt cô 3", "789 Võ Văn Ngân", R.drawable.restaurant));
     }
 }
 

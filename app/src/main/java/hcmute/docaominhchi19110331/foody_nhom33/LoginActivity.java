@@ -1,6 +1,7 @@
 package hcmute.docaominhchi19110331.foody_nhom33;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -12,6 +13,9 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
+
+import hcmute.docaominhchi19110331.foody_nhom33.Activity.Database;
 import hcmute.docaominhchi19110331.foody_nhom33.Activity.NoticeActivity;
 import hcmute.docaominhchi19110331.foody_nhom33.Activity.ProfileActivity;
 
@@ -21,12 +25,16 @@ public class LoginActivity extends AppCompatActivity {
     Button btn_login;
     TextView txt_forgot, txt_signup;
 
+    Database database;
+    Cursor dataRestaurants;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
         ScrollView container = (ScrollView) findViewById(R.id.container);
         getLayoutInflater().inflate(R.layout.login_activity, container);
+        database = new Database(this, "foody.sqlite", null, 1);
 
         map();
 
@@ -57,8 +65,14 @@ public class LoginActivity extends AppCompatActivity {
         img_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                startActivity(intent);
+                if ( checkUser()){
+                    Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+                    startActivity(intent);
+                }
+                else {
+                    Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                    startActivity(intent);
+                }
             }
         });
 
@@ -73,11 +87,28 @@ public class LoginActivity extends AppCompatActivity {
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
-                startActivity(intent);
+                //get User
+                String email = edt_email.getText().toString().trim();
+                String pass = edt_pass.getText().toString().trim();
+                Cursor dataRestaurants = database.GetData("SELECT * FROM Users WHERE email=\'"+ email+"\' AND pass=\'"+pass+"\'");
+
+                if ((dataRestaurants.getCount() > 0) && (dataRestaurants != null)) {
+                    while (dataRestaurants.moveToNext()) {
+                        int id = dataRestaurants.getInt(0);
+                        setdataUser(id);
+                    }
+                    Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+                    startActivity(intent);
+                }
             }
         });
 
+    }
+    private void setdataUser(int id){
+        ((MyApplication) this.getApplication()).setuserId(id);
+    }
+    private boolean checkUser(){
+        return ((MyApplication) this.getApplication()).checkUser();
     }
 
     public void map() {

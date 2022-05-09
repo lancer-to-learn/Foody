@@ -255,12 +255,21 @@ public class MainActivity extends AppCompatActivity {
 //        listFood.add(new Food("Bread", "200", R.drawable.bread));
         database.QueryData("INSERT INTO Foods VALUES(1, 2, 'Cơm gà', 20, "+R.drawable.asiafood2+")");
         database.QueryData("INSERT INTO Foods VALUES(2, 2, 'Beef Steak', 50, "+R.drawable.beefsteak+")");
+
+        //User
+        database.QueryData("INSERT INTO Users VALUES(1, 'tuan@gmail.com', '123', 'Q12, Ho Chi Minh', 'Nguyen Anh Tuan', '0333912392')");
+
+        //Comment
+        database.QueryData("INSERT INTO Comments VALUES(null, 1, 1, 'Delicious')");
+        database.QueryData("INSERT INTO Comments VALUES(null, 1, 1, 'Fanstactic')");
     }
     private void dataDelete() {
         //Restaurants
         database.QueryData("DELETE FROM Restaurants");
         //Foods
         database.QueryData("DELETE FROM Foods");
+        //Users
+        database.QueryData("DELETE FROM Users");
     }
     private void getdataRestaurants(){
         //LIMIT row_count OFFSET offset;

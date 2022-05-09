@@ -3,6 +3,7 @@
     package="hcmute.docaominhchi19110331.foody_nhom33">
 
     <application
+        android:name=".MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="Foody"

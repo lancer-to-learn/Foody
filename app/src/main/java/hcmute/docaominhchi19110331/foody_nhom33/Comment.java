@@ -1,27 +1,47 @@
 package hcmute.docaominhchi19110331.foody_nhom33;
 
 public class Comment {
-    private User user;
-    private String comment;
+    private int id;
+    private int id_food;
+    private int id_user;
+    private String content;
 
-    public Comment(User user, String comment) {
-        this.user = user;
-        this.comment = comment;
+    public Comment(int id, int id_food, int id_user, String content) {
+        this.id = id;
+        this.id_food = id_food;
+        this.id_user = id_user;
+        this.content = content;
     }
 
-    public User getUser() {
-        return user;
+    public int getId() {
+        return id;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getComment() {
-        return comment;
+    public int getId_food() {
+        return id_food;
     }
 
-    public void setComment(String comment) {
-        this.comment = comment;
+    public void setId_food(int id_food) {
+        this.id_food = id_food;
+    }
+
+    public int getId_user() {
+        return id_user;
+    }
+
+    public void setId_user(int id_user) {
+        this.id_user = id_user;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
     }
 }

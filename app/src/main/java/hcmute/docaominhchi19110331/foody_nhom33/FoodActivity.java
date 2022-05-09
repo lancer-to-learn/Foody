@@ -134,9 +134,6 @@ public class FoodActivity extends AppCompatActivity {
         commentList = new ArrayList<>();
         in_food_list = new ArrayList<>();
 
-        commentList.add(new Comment(new User("Chi", ""), "Good"));
-        commentList.add(new Comment(new User("Tuan", ""), "Fantastic"));
-
         //Get food info
         Intent intent = getIntent();
         id = intent.getIntExtra("id", 1);
@@ -152,6 +149,9 @@ public class FoodActivity extends AppCompatActivity {
         txt_description_food.setText("Món ngon giá hạt dẻ");
 
         //Set comment info
+//        commentList.add(new Comment(new User("Chi", ""), "Good"));
+//        commentList.add(new Comment(new User("Tuan", ""), "Fantastic"));
+        getdataComments(id);
         adapter = new CommentAdapter(this, R.layout.comment, commentList);
         lv_comment.setAdapter(adapter);
 
@@ -175,5 +175,17 @@ public class FoodActivity extends AppCompatActivity {
             in_food_list.add(new Food(id, id_res, name, address,image));
         }
         inFoodAdapter.notifyDataSetChanged();
+    }
+    private void getdataComments(int id_food){
+        Cursor dataComments = database.GetData("SELECT * FROM Comments WHERE Id_food = "+id_food+"");
+        commentList.clear();
+        while (dataComments.moveToNext()){
+            int id = dataComments.getInt(0);
+            int id_user = dataComments.getInt(2);
+            String content = dataComments.getString(2);
+
+            commentList.add(new Comment(id, id_food, id_user, content));
+        }
+        adapter.notifyDataSetChanged();
     }
 }
