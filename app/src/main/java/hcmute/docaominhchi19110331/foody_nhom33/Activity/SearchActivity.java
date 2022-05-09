@@ -127,8 +127,8 @@ public class SearchActivity extends AppCompatActivity {
         searchList = new ArrayList<>();
         spinList = new ArrayList<>();
 
-        searchList.add(new Food("Cơm gà", "20", R.drawable.asiafood2));
-        searchList.add(new Food("Beef Steak", "50", R.drawable.beefsteak));
+//        searchList.add(new Food("Cơm gà", "20", R.drawable.asiafood2));
+//        searchList.add(new Food("Beef Steak", "50", R.drawable.beefsteak));
 
 
         spinList.add("TP. HCM");

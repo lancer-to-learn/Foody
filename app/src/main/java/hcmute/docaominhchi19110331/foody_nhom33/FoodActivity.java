@@ -1,6 +1,7 @@
 package hcmute.docaominhchi19110331.foody_nhom33;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -17,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+import hcmute.docaominhchi19110331.foody_nhom33.Activity.Database;
 import hcmute.docaominhchi19110331.foody_nhom33.Activity.NoticeActivity;
 
 public class FoodActivity extends AppCompatActivity {
@@ -34,6 +36,9 @@ public class FoodActivity extends AppCompatActivity {
     int REQUEST_CODE = 123;
     String name_food, price, res;
     int image;
+    int id;
+    int id_res;
+    Database database;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -41,15 +46,9 @@ public class FoodActivity extends AppCompatActivity {
         setContentView(R.layout.activity_menu);
         ScrollView container = (ScrollView) findViewById(R.id.container);
         getLayoutInflater().inflate(R.layout.food_activity, container);
+
         map();
-
-        adapter = new CommentAdapter(this, R.layout.comment, commentList);
-        lv_comment.setAdapter(adapter);
-
-        inFoodAdapter = new RecommendedAdapter(this, in_food_list);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-        in_food_recycle.setLayoutManager(layoutManager);
-        in_food_recycle.setAdapter(inFoodAdapter);
+        dataInit();
 
         btn_comment.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -102,8 +101,6 @@ public class FoodActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
     }
 
     @Override
@@ -132,18 +129,19 @@ public class FoodActivity extends AppCompatActivity {
         img_history = (ImageView) findViewById(R.id.history_icon);
         img_profile = (ImageView) findViewById(R.id.profile_icon);
         img_notice = (ImageView) findViewById(R.id.img_notice);
-
+    }
+    private void dataInit() {
+        database = new Database(this, "foody.sqlite", null, 1);
         commentList = new ArrayList<>();
         in_food_list = new ArrayList<>();
 
         commentList.add(new Comment(new User("Chi", ""), "Good"));
         commentList.add(new Comment(new User("Tuan", ""), "Fantastic"));
 
-        in_food_list.add(new Food("Kim chi", "100", R.drawable.kimchi));
-        in_food_list.add(new Food("BeefSteak", "500", R.drawable.beefsteak));
-        in_food_list.add(new Food("Bread", "200", R.drawable.bread));
-
+        //Get food info
         Intent intent = getIntent();
+        id = intent.getIntExtra("id", 1);
+        id_res = intent.getIntExtra("id_res", 1);
         image = intent.getIntExtra("image", 0);
         name_food = intent.getStringExtra("name");
         price = intent.getStringExtra("price");
@@ -152,7 +150,31 @@ public class FoodActivity extends AppCompatActivity {
         txt_food_name.setText(name_food);
         btn_order.setText(price);
         txt_res_of_food.setText(res);
-        txt_description_food.setText("Món ngon giá hạt rẻ");
-    }
+        txt_description_food.setText("Món ngon giá hạt dẻ");
 
+        //Set comment info
+        adapter = new CommentAdapter(this, R.layout.comment, commentList);
+        lv_comment.setAdapter(adapter);
+
+        //Set foods info
+        inFoodAdapter = new RecommendedAdapter(this, in_food_list);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        getdataFoods();
+        in_food_recycle.setLayoutManager(layoutManager);
+        in_food_recycle.setAdapter(inFoodAdapter);
+    }
+    private void getdataFoods(){
+        Cursor dataFoods = database.GetData("SELECT * FROM Foods WHERE Id <> "+id+" AND Id_res = "+id_res+"");
+        in_food_list.clear();
+        while (dataFoods.moveToNext()){
+            int id = dataFoods.getInt(0);
+            int id_res = dataFoods.getInt(1);
+            String name = dataFoods.getString(2);
+            String address = dataFoods.getString(3);
+            int image = dataFoods.getInt(4);
+
+            in_food_list.add(new Food(id, id_res, name, address,image));
+        }
+        inFoodAdapter.notifyDataSetChanged();
+    }
 }

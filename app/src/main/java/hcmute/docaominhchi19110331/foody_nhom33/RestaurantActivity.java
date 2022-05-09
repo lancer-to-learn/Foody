@@ -1,7 +1,9 @@
 package hcmute.docaominhchi19110331.foody_nhom33;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
@@ -16,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+import hcmute.docaominhchi19110331.foody_nhom33.Activity.Database;
 import hcmute.docaominhchi19110331.foody_nhom33.Activity.NoticeActivity;
 import hcmute.docaominhchi19110331.foody_nhom33.Adapter.NearRestaurantAdapter;
 
@@ -30,6 +33,7 @@ public class RestaurantActivity extends AppCompatActivity {
     RecyclerView nearResRecycle;
     ArrayList<Restaurant> nearList;
     NearRestaurantAdapter nearRestaurantAdapter;
+    Database database;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -39,21 +43,19 @@ public class RestaurantActivity extends AppCompatActivity {
         getLayoutInflater().inflate(R.layout.restaurant, container);
 
         map();
-
-        adapter = new FoodAdapter(this, R.layout.search_activity, listFood);
-        nearRestaurantAdapter = new NearRestaurantAdapter(this, nearList);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-        nearResRecycle.setLayoutManager(layoutManager);
-        nearResRecycle.setAdapter(nearRestaurantAdapter);
-        lv_food.setAdapter(adapter);
+        dataInit();
 
         lv_food.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                int id = listFood.get(i).getId();
+                int id_res = listFood.get(i).getId_res();
                 int image = listFood.get(i).getImage();
                 String name = listFood.get(i).getName();
                 Intent intent1 = new Intent(getApplicationContext(), FoodActivity.class);
 
+                    intent1.putExtra("id", id);
+                    intent1.putExtra("id_res", id_res);
                     intent1.putExtra("name", name);
                     intent1.putExtra("image", image);
                     intent1.putExtra("price", listFood.get(i).getPrice());
@@ -98,7 +100,6 @@ public class RestaurantActivity extends AppCompatActivity {
 
     }
 
-
     private void map() {
         img_restaurant = (ImageView) findViewById(R.id.img_foody);
         txt_name = (TextView) findViewById(R.id.txt_name_restaurant);
@@ -109,26 +110,61 @@ public class RestaurantActivity extends AppCompatActivity {
         img_profile = (ImageView) findViewById(R.id.profile_icon);
         img_notice = (ImageView) findViewById(R.id.img_notice);
         nearResRecycle = (RecyclerView) findViewById(R.id.near_restaurant_recycler);
+    }
+    private void getdataFoods(int this_res){
+        Cursor dataFoods = database.GetData("SELECT * FROM Foods WHERE id_res = "+this_res+"");
+        listFood.clear();
+        while (dataFoods.moveToNext()){
+            int id = dataFoods.getInt(0);
+            int id_res = dataFoods.getInt(1);
+            String name = dataFoods.getString(2);
+            String address = dataFoods.getString(3);
+            int image = dataFoods.getInt(4);
+
+            listFood.add(new Food(id, id_res, name, address,image));
+        }
+        adapter.notifyDataSetChanged();
+    }
+    private void getdataRestaurants(int this_res){
+        Cursor dataRestaurants = database.GetData("SELECT * FROM Restaurants WHERE id <> "+this_res+" ORDER BY Id DESC LIMIT 5");
+        nearList.clear();
+        while (dataRestaurants.moveToNext()){
+            int id = dataRestaurants.getInt(0);
+            String name = dataRestaurants.getString(1);
+            String address = dataRestaurants.getString(2);
+            int image = dataRestaurants.getInt(3);
+
+            nearList.add(new Restaurant(id, name, address,image));
+        }
+        nearRestaurantAdapter.notifyDataSetChanged();
+    }
+    private void dataInit() {
+        database = new Database(this, "foody.sqlite", null, 1);
         listFood = new ArrayList<>();
         nearList = new ArrayList<>();
 
-        listFood.add(new Food("Kim chi", "100", R.drawable.kimchi));
-        listFood.add(new Food("BeefSteak", "500", R.drawable.beefsteak));
-        listFood.add(new Food("Bread", "200", R.drawable.bread));
-
-        nearList.add(new Restaurant("Bún Chị Bảy", "123 Nguyễn Huệ", R.drawable.restaurant));
-        nearList.add(new Restaurant("Cơm sườn bì chả", "456 Võ Văn Kiệt", R.drawable.restaurant1));
-        nearList.add(new Restaurant("Ăn vặt cô 3", "789 Võ Văn Ngân", R.drawable.restaurant));
-
+        //Get restaurant info
         Intent intent = getIntent();
+        int id = intent.getIntExtra("id", 0);
         String name = intent.getStringExtra("name");
         int image = intent.getIntExtra("image", 0);
         String address = intent.getStringExtra("address");
+
+        //Set restaurant info
         txt_name.setText(name);
         img_restaurant.setImageResource(image);
         txt_address.setText(address);
 
+        //Set food info
+        adapter = new FoodAdapter(this, R.layout.search_activity, listFood);
+        getdataFoods(id);
+        lv_food.setAdapter(adapter);
 
-
+        //Set other restaurants info
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        nearResRecycle.setLayoutManager(layoutManager);
+        nearRestaurantAdapter = new NearRestaurantAdapter(this, nearList);
+        getdataRestaurants(id);
+        nearResRecycle.setAdapter(nearRestaurantAdapter);
     }
 }

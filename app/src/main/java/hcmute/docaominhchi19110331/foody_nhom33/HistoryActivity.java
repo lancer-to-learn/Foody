@@ -100,7 +100,7 @@ public class HistoryActivity extends AppCompatActivity {
         img_profile.setImageResource(R.drawable.profile_icon);
         orders = new ArrayList<>();
 
-        orders.add(new Order(new Food("BeefSteak", "500000", R.drawable.beefsteak), 1));
-        orders.add(new Order(new Food("Bread", "10000", R.drawable.bread), 1));
+//        orders.add(new Order(new Food("BeefSteak", "500000", R.drawable.beefsteak), 1));
+//        orders.add(new Order(new Food("Bread", "10000", R.drawable.bread), 1));
     }
 }
