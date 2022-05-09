@@ -270,6 +270,8 @@ public class MainActivity extends AppCompatActivity {
         database.QueryData("DELETE FROM Foods");
         //Users
         database.QueryData("DELETE FROM Users");
+        //Comments
+        database.QueryData("DELETE FROM Comments");
     }
     private void getdataRestaurants(){
         //LIMIT row_count OFFSET offset;

@@ -5,12 +5,14 @@ public class Comment {
     private int id_food;
     private int id_user;
     private String content;
+    private String name;
 
-    public Comment(int id, int id_food, int id_user, String content) {
+    public Comment(int id, int id_food, int id_user, String content, String name) {
         this.id = id;
         this.id_food = id_food;
         this.id_user = id_user;
         this.content = content;
+        this.name = name;
     }
 
     public int getId() {
@@ -43,5 +45,13 @@ public class Comment {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

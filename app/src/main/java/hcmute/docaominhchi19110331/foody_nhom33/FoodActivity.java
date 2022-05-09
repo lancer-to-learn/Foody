@@ -149,10 +149,8 @@ public class FoodActivity extends AppCompatActivity {
         txt_description_food.setText("Món ngon giá hạt dẻ");
 
         //Set comment info
-//        commentList.add(new Comment(new User("Chi", ""), "Good"));
-//        commentList.add(new Comment(new User("Tuan", ""), "Fantastic"));
-        getdataComments(id);
         adapter = new CommentAdapter(this, R.layout.comment, commentList);
+        getdataComments(id);
         lv_comment.setAdapter(adapter);
 
         //Set foods info
@@ -178,14 +176,20 @@ public class FoodActivity extends AppCompatActivity {
     }
     private void getdataComments(int id_food){
         Cursor dataComments = database.GetData("SELECT * FROM Comments WHERE Id_food = "+id_food+"");
+        String name = "";
         commentList.clear();
         while (dataComments.moveToNext()){
             int id = dataComments.getInt(0);
             int id_user = dataComments.getInt(2);
-            String content = dataComments.getString(2);
+            Cursor datauserName = database.GetData("SELECT Name FROM Users WHERE Id = "+id_user+"");
+            while (datauserName.moveToNext()){
+                name = datauserName.getString(0);
+            }
+            String content = dataComments.getString(3);
 
-            commentList.add(new Comment(id, id_food, id_user, content));
+            commentList.add(new Comment(id, id_food, id_user, content, name));
         }
+
         adapter.notifyDataSetChanged();
     }
 }

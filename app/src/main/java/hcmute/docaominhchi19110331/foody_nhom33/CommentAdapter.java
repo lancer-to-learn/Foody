@@ -10,10 +10,13 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import hcmute.docaominhchi19110331.foody_nhom33.Activity.Database;
+
 public class CommentAdapter extends BaseAdapter {
     private Context context;
     private int layout;
     private List<Comment> commentList;
+    Database database;
 
     public CommentAdapter(Context context, int layout, List<Comment> commentList) {
         this.context = context;
@@ -45,7 +48,7 @@ public class CommentAdapter extends BaseAdapter {
 
         CommentAdapter.ViewHolder viewHolder;
 
-        if (view == null){
+        if (view == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
             view = inflater.inflate(layout, null);
@@ -61,8 +64,8 @@ public class CommentAdapter extends BaseAdapter {
         }
 
         Comment comment = commentList.get(i);
-        viewHolder.txt_user.setText(comment.getUser().getEmail());
-        viewHolder.txt_comment.setText(comment.getComment());
+        viewHolder.txt_user.setText(comment.getName());
+        viewHolder.txt_comment.setText(comment.getContent());
 
         return view;
 
