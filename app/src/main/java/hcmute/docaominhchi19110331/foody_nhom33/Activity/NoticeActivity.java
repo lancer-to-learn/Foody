@@ -1,7 +1,9 @@
 package hcmute.docaominhchi19110331.foody_nhom33.Activity;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -38,6 +40,7 @@ public class NoticeActivity extends AppCompatActivity {
     ImageView img_home, img_history, img_profile, img_notice;
     List<Notice> list;
     NoticeAdapter adapter;
+    Database database;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -113,12 +116,26 @@ public class NoticeActivity extends AppCompatActivity {
         img_notice.setImageResource(R.drawable.notice_active_icon);
         img_profile.setImageResource(R.drawable.profile_icon);
 
+        dataInit();
+    }
+    private void dataInit(){
+        database = new Database(this, "foody.sqlite", null, 1);
         list = new ArrayList<>();
+        int userId = ((MyApplication) this.getApplication()).getuserId();
 
+        Cursor dataReceipt = database.GetData("SELECT Id_food, Time FROM Receipts_detail WHERE Id_user = "+ userId+" ORDER BY Id DESC");
+        while (dataReceipt.moveToNext()){
+            int id = dataReceipt.getInt(0);
+            String time = dataReceipt.getString(1);
+            String food_name = "";
 
-        list.add(new Notice("Bạn đã đặt thành công món Kim Chi", "10:00 AM 5/3/2022"));
-        list.add(new Notice("Bạn đã đặt thành công món Kim Chi", "4:20 PM 5/3/2022"));
-
+            Cursor dataFood = database.GetData("SELECT Name FROM Foods WHERE Id = "+ id+"");
+            while (dataFood.moveToNext()){
+                food_name = dataFood.getString(0);
+            }
+            Log.d("name", ""+food_name);
+            list.add(new Notice("Đặt thành công " + food_name, time));
+        }
     }
     private boolean checkUser(){
         return ((MyApplication) this.getApplication()).checkUser();

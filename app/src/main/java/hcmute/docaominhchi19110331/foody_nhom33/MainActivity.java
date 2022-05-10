@@ -231,13 +231,15 @@ public class MainActivity extends AppCompatActivity {
                 "Id_res INTEGER," +
                 "Id_user INTEGER)");
         //init Receipts_detail table
+//        database.QueryData("DROP TABLE IF EXISTS Receipts_detail");
         database.QueryData("CREATE TABLE IF NOT EXISTS Receipts_detail(" +
                 "Id INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "Id_food INTEGER," +
                 "Quantity INTEGER," +
                 "Price_total INTEGER," +
                 "Id_profile INTEGER," +
-                "Id_user INTEGER)");
+                "Id_user INTEGER," +
+                "Time VARCHAR(50))");
         //init Profile table
         database.QueryData("CREATE TABLE IF NOT EXISTS Profiles(" +
                 "Id INTEGER PRIMARY KEY AUTOINCREMENT," +
@@ -282,11 +284,9 @@ public class MainActivity extends AppCompatActivity {
         database.QueryData("INSERT INTO Comments VALUES(null, 1, 1, 'Fanstactic')");
 
         //Receipt
-        database.QueryData("INSERT INTO Receipts_detail VALUES(null, 1, 3, 60, 1, 1)");
-        database.QueryData("INSERT INTO Receipts_detail VALUES(null, 1, 4, 80, 1, 1)");
-        database.QueryData("INSERT INTO Receipts_detail VALUES(null, 2, 2, 80, 1, 1)");
+        database.QueryData("INSERT INTO Receipts_detail VALUES(null, 2, 2, 80, 1, 1, '10:00 AM 5/3/2022')");
 
-        database.QueryData("INSERT INTO Receipts_detail VALUES(null, 2, 3, 150, 2, 2)");
+        database.QueryData("INSERT INTO Receipts_detail VALUES(null, 2, 3, 150, 2, 2, '10:00 AM 5/3/2022')");
     }
     private void dataDelete() {
         //Restaurants

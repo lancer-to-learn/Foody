@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import java.util.Calendar;
 
 import android.provider.ContactsContract;
 import android.util.Log;
@@ -19,7 +20,11 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import java.sql.Time;
+import java.util.Date;
+
 import hcmute.docaominhchi19110331.foody_nhom33.Activity.Database;
+import hcmute.docaominhchi19110331.foody_nhom33.Activity.NoticeActivity;
 import hcmute.docaominhchi19110331.foody_nhom33.ViewPagerAdapter.OrderPagerAdapter;
 
 
@@ -79,8 +84,12 @@ public class FoodInfoFragment extends Fragment {
                 int id_food = thisFood.getId();
                 int quantity = Integer.parseInt(txt_quantity.getText().toString().trim());
                 int price_total = Integer.parseInt(txt_total.getText().toString().trim());
-                database.QueryData("INSERT INTO Receipts_detail VALUES(null, "+ id_food+", "+ quantity+", "+ price_total+", 1, "+ userId+")");
 
+                String currentTime = Calendar.getInstance().getTime().toString();
+                database.QueryData("INSERT INTO Receipts_detail VALUES(null, "+ id_food+", "+ quantity+", "+ price_total+", 1, "+ userId+", \'"+ currentTime+"\')");
+
+                Intent intent = new Intent(getActivity(), NoticeActivity.class);
+                startActivity(intent);
             }
         });
         // Inflate the layout for this fragment

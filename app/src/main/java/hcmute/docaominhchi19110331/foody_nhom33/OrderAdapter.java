@@ -2,6 +2,7 @@ package hcmute.docaominhchi19110331.foody_nhom33;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.database.Cursor;
 import android.view.View;
@@ -101,7 +102,7 @@ public class OrderAdapter extends BaseAdapter {
     }
     private void dataInit(int id_food){
         database = new Database(context, "foody.sqlite", null, 1);
-        Cursor dataFood = database.GetData("SELECT Name, Image, Price, Id_res FROM Foods WHERE Id = "+ id_food +"");
+        Cursor dataFood = database.GetData("SELECT Name, Image, Price, Id_res FROM Foods WHERE Id = "+ id_food +" ORDER BY Id DESC");
         while (dataFood.moveToNext()){
             String name = dataFood.getString(0);
             int image = dataFood.getInt(1);
@@ -113,7 +114,7 @@ public class OrderAdapter extends BaseAdapter {
                  name_res = dataRes.getString(0);
             }
 
-            thisFood = new Food(0, 0, name, price, image);
+            thisFood = new Food(id_food, 0, name, price, image);
         }
     }
 }
