@@ -1,11 +1,14 @@
 package hcmute.docaominhchi19110331.foody_nhom33;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.provider.ContactsContract;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,14 +19,20 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import hcmute.docaominhchi19110331.foody_nhom33.Activity.Database;
+import hcmute.docaominhchi19110331.foody_nhom33.ViewPagerAdapter.OrderPagerAdapter;
+
 
 public class FoodInfoFragment extends Fragment {
-
+    Context context;
     ImageView img_food, img_add, img_sub;
     TextView txt_nameoffood, txt_price, txt_star, txt_quantity, txt_total;
     Button btn_order;
     View view;
     Food thisFood;
+    Database database;
+    int userId;
+
     public FoodInfoFragment(Food getFood) {
         // Required empty public constructor
         thisFood = getFood;
@@ -33,6 +42,9 @@ public class FoodInfoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_food_info, container, false);
+        userId = ((MyApplication) getActivity().getApplication()).getuserId();
+        database = new Database(getActivity(), "foody.sqlite", null, 1);
+
         map();
         dataInit();
 
@@ -61,12 +73,16 @@ public class FoodInfoFragment extends Fragment {
                 }
             }
         });
-//        btn_order.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//            }
-//        });
+        btn_order.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int id_food = thisFood.getId();
+                int quantity = Integer.parseInt(txt_quantity.getText().toString().trim());
+                int price_total = Integer.parseInt(txt_total.getText().toString().trim());
+                database.QueryData("INSERT INTO Receipts_detail VALUES(null, "+ id_food+", "+ quantity+", "+ price_total+", 1, "+ userId+")");
+
+            }
+        });
         // Inflate the layout for this fragment
         return view;
     }

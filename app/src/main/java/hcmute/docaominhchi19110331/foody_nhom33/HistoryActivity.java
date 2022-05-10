@@ -42,24 +42,6 @@ public class HistoryActivity extends AppCompatActivity {
         getdataReceipt();
         lv_order.setAdapter(adapter);
 
-        lv_order.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                btn_order.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Intent intent = new Intent(getApplicationContext(), OrderActivity.class);
-//                        intent.putExtra("name", orders.get(i).getFood().getName());
-//                        intent.putExtra("price", orders.get(i).getFood().getPrice());
-//                        intent.putExtra("image", orders.get(i).getFood().getImage());
-                        intent.putExtra("quantity", orders.get(i).getQuantity());
-                        Log.d("mytag", "hello");
-                        startActivity(intent);
-                    }
-                });
-            }
-        });
-
         img_home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -120,7 +102,8 @@ public class HistoryActivity extends AppCompatActivity {
     }
     private void getdataReceipt(){
         int userId = ((MyApplication) this.getApplication()).getuserId();
-        Cursor dataReceitps = database.GetData("SELECT * FROM Receipts_detail WHERE Id_user = "+userId+"");
+        Cursor dataReceitps = database.GetData("SELECT * FROM Receipts_detail WHERE Id_user = "+ userId+"");
+//         WHERE Id_user = "+userId+"
         orders.clear();
         while (dataReceitps.moveToNext()){
             int id_food = dataReceitps.getInt(1);

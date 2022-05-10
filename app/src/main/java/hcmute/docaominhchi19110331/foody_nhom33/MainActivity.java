@@ -284,6 +284,8 @@ public class MainActivity extends AppCompatActivity {
         //Receipt
         database.QueryData("INSERT INTO Receipts_detail VALUES(null, 1, 3, 60, 1, 1)");
         database.QueryData("INSERT INTO Receipts_detail VALUES(null, 1, 4, 80, 1, 1)");
+        database.QueryData("INSERT INTO Receipts_detail VALUES(null, 2, 2, 80, 1, 1)");
+
         database.QueryData("INSERT INTO Receipts_detail VALUES(null, 2, 3, 150, 2, 2)");
     }
     private void dataDelete() {

@@ -6,13 +6,16 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
+import hcmute.docaominhchi19110331.foody_nhom33.Activity.Database;
 import hcmute.docaominhchi19110331.foody_nhom33.CustomerInfoFragment;
 import hcmute.docaominhchi19110331.foody_nhom33.Food;
 import hcmute.docaominhchi19110331.foody_nhom33.FoodInfoFragment;
+import hcmute.docaominhchi19110331.foody_nhom33.MyApplication;
 
 
 public class OrderPagerAdapter extends FragmentStatePagerAdapter {
     Food getFood;
+
     public OrderPagerAdapter(@NonNull FragmentManager fm, int behavior, Food thisFood) {
         super(fm, behavior);
         getFood = thisFood;

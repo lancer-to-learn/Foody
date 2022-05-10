@@ -1,11 +1,13 @@
 package hcmute.docaominhchi19110331.foody_nhom33;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.database.Cursor;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -19,6 +21,7 @@ public class OrderAdapter extends BaseAdapter {
     private List<Order> orderList;
 
     String name_res;
+    int image, id_res;
     Database database;
     Food thisFood;
 
@@ -46,6 +49,7 @@ public class OrderAdapter extends BaseAdapter {
     private class ViewHolder {
         ImageView img_food;
         TextView txt_food,  txt_price, txt_quantity, txt_address;
+        Button btn_order;
     }
 
     @Override
@@ -65,6 +69,7 @@ public class OrderAdapter extends BaseAdapter {
             viewHolder.img_food = (ImageView) view.findViewById(R.id.img_ordered_food);
             viewHolder.txt_price = (TextView) view.findViewById(R.id.txt_ordered_price);
             viewHolder.txt_quantity = (TextView) view.findViewById(R.id.txt_ordered_quantity);
+            viewHolder.btn_order = (Button) view.findViewById(R.id.btn_reorder);
 
             view.setTag(viewHolder);
         } else {
@@ -80,23 +85,35 @@ public class OrderAdapter extends BaseAdapter {
         viewHolder.img_food.setImageResource(thisFood.getImage());
         viewHolder.txt_quantity.setText(String.valueOf(order.getQuantity()));
 
+        viewHolder.btn_order.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, OrderActivity.class);
+                intent.putExtra("id", thisFood.getId());
+                intent.putExtra("name", thisFood.getName());
+                intent.putExtra("price", thisFood.getPrice());
+                intent.putExtra("image", thisFood.getImage());
+                context.startActivity(intent);
+            }
+        });
         return view;
 
     }
     private void dataInit(int id_food){
         database = new Database(context, "foody.sqlite", null, 1);
-        Cursor dataFood = database.GetData("SELECT Name, Image, Id_res FROM Foods WHERE Id = "+ id_food +"");
+        Cursor dataFood = database.GetData("SELECT Name, Image, Price, Id_res FROM Foods WHERE Id = "+ id_food +"");
         while (dataFood.moveToNext()){
             String name = dataFood.getString(0);
             int image = dataFood.getInt(1);
-            int id_res = dataFood.getInt(2);
+            int price = dataFood.getInt(2);
+            int id_res = dataFood.getInt(3);
 
             Cursor dataRes = database.GetData("SELECT Name FROM Restaurants WHERE Id = "+ id_res +"");
             while (dataRes.moveToNext()){
                  name_res = dataRes.getString(0);
             }
 
-            thisFood = new Food(0, 0, name, 0, image);
+            thisFood = new Food(0, 0, name, price, image);
         }
     }
 }
