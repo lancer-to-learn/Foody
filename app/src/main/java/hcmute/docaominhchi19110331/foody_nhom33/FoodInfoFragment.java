@@ -61,6 +61,12 @@ public class FoodInfoFragment extends Fragment {
                 }
             }
         });
+//        btn_order.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//            }
+//        });
         // Inflate the layout for this fragment
         return view;
     }
@@ -76,7 +82,7 @@ public class FoodInfoFragment extends Fragment {
         txt_quantity = (TextView) view.findViewById(R.id.txt_quantity_order);
         txt_total = (TextView) view.findViewById(R.id.txt_total_money);
 
-        btn_order = (Button) view.findViewById(R.id.btn_order2);
+        btn_order = (Button) view.findViewById(R.id.btn_order_food);
     }
     private void dataInit() {
         img_food.setImageResource(thisFood.getImage());

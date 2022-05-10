@@ -181,8 +181,8 @@ public class MainActivity extends AppCompatActivity {
         recommended.setLayoutManager(layoutManager);
 
         databaseInit();
-//        dataDelete();
-//        dataInsert();
+        dataDelete();
+        dataInsert();
 
         getdataRestaurants();
         getdataFoods();
@@ -280,6 +280,11 @@ public class MainActivity extends AppCompatActivity {
         //Comment
         database.QueryData("INSERT INTO Comments VALUES(null, 1, 1, 'Delicious')");
         database.QueryData("INSERT INTO Comments VALUES(null, 1, 1, 'Fanstactic')");
+
+        //Receipt
+        database.QueryData("INSERT INTO Receipts_detail VALUES(null, 1, 3, 60, 1, 1)");
+        database.QueryData("INSERT INTO Receipts_detail VALUES(null, 1, 4, 80, 1, 1)");
+        database.QueryData("INSERT INTO Receipts_detail VALUES(null, 2, 3, 150, 2, 2)");
     }
     private void dataDelete() {
         //Restaurants
@@ -290,6 +295,8 @@ public class MainActivity extends AppCompatActivity {
         database.QueryData("DELETE FROM Users");
         //Comments
         database.QueryData("DELETE FROM Comments");
+        //Receipts
+        database.QueryData("DELETE FROM Receipts_detail");
     }
     private void getdataRestaurants(){
         //LIMIT row_count OFFSET offset;

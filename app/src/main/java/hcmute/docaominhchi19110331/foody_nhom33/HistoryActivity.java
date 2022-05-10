@@ -1,6 +1,7 @@
 package hcmute.docaominhchi19110331.foody_nhom33;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -14,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 
+import hcmute.docaominhchi19110331.foody_nhom33.Activity.Database;
 import hcmute.docaominhchi19110331.foody_nhom33.Activity.NoticeActivity;
 import hcmute.docaominhchi19110331.foody_nhom33.Activity.ProfileActivity;
 
@@ -23,6 +25,7 @@ public class HistoryActivity extends AppCompatActivity {
     Button btn_order;
     ArrayList<Order> orders;
     OrderAdapter adapter;
+    Database database;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -30,8 +33,12 @@ public class HistoryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_menu);
         ScrollView container = (ScrollView) findViewById(R.id.container);
         getLayoutInflater().inflate(R.layout.history_activity, container);
+
+        database = new Database(this, "foody.sqlite", null, 1);
         map();
+
         adapter = new OrderAdapter(this, R.layout.order, orders);
+        getdataReceipt();
         lv_order.setAdapter(adapter);
 
         lv_order.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -109,6 +116,19 @@ public class HistoryActivity extends AppCompatActivity {
 
 //        orders.add(new Order(new Food("BeefSteak", "500000", R.drawable.beefsteak), 1));
 //        orders.add(new Order(new Food("Bread", "10000", R.drawable.bread), 1));
+    }
+    private void getdataReceipt(){
+        int userId = ((MyApplication) this.getApplication()).getuserId();
+        Cursor dataReceitps = database.GetData("SELECT * FROM Receipts_detail WHERE Id_user = "+userId+"");
+        orders.clear();
+        while (dataReceitps.moveToNext()){
+            int id_food = dataReceitps.getInt(1);
+            int quantity = dataReceitps.getInt(2);
+            int price_total = dataReceitps.getInt(3);
+
+            orders.add(new Order(0, id_food, quantity, price_total, userId));
+        }
+        adapter.notifyDataSetChanged();
     }
     private boolean checkUser(){
         return ((MyApplication) this.getApplication()).checkUser();

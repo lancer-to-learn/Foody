@@ -2,6 +2,7 @@ package hcmute.docaominhchi19110331.foody_nhom33;
 
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.database.Cursor;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -10,10 +11,14 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import hcmute.docaominhchi19110331.foody_nhom33.Activity.Database;
+
 public class OrderAdapter extends BaseAdapter {
     private Context context;
     private int layout;
     private List<Order> orderList;
+    Database database;
+    Food thisFood;
 
     public OrderAdapter(Context context, int layout, List<Order> orderList) {
         this.context = context;
@@ -65,12 +70,24 @@ public class OrderAdapter extends BaseAdapter {
         }
 
         Order order = orderList.get(i);
-//        viewHolder.txt_food.setText(order.getFood().getName());
-//        viewHolder.txt_price.setText(order.getFood().getPrice());
-//        viewHolder.img_food.setImageResource(order.getFood().getImage());
-//        viewHolder.txt_quantity.setText(String.valueOf(order.getQuantity()));
+        dataInit(order.getId_food());
+
+        viewHolder.txt_food.setText(thisFood.getName());
+        viewHolder.txt_price.setText(String.valueOf(order.getPrice_total()));
+        viewHolder.img_food.setImageResource(thisFood.getImage());
+        viewHolder.txt_quantity.setText(String.valueOf(order.getQuantity()));
 
         return view;
 
+    }
+    private void dataInit(int id_food){
+        database = new Database(context, "foody.sqlite", null, 1);
+        Cursor dataFood = database.GetData("SELECT Name, Image FROM Foods WHERE Id = "+ id_food +"");
+        while (dataFood.moveToNext()){
+            String name = dataFood.getString(0);
+            int image = dataFood.getInt(1);
+
+            thisFood = new Food(0, 0, name, 0, image);
+        }
     }
 }
