@@ -86,6 +86,7 @@ public class AddressInforActivity extends AppCompatActivity {
             String address = intent.getStringExtra("address");
             edt_address.setText(address);
         }
+        edt_address.setEnabled(false);
 
     }
     private boolean checkUser(){

@@ -83,7 +83,6 @@ public class RestaurantAdapter extends BaseAdapter {
             viewHolder.txt_address1.setText(restaurant.getAddress());
             viewHolder.img_image1.setImageResource(restaurant.getImage());
 
-
         return view;
     }
 }

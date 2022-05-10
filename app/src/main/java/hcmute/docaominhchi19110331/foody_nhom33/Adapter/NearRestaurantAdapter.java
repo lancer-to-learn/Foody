@@ -47,6 +47,7 @@ public class NearRestaurantAdapter extends RecyclerView.Adapter<NearRestaurantAd
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(context, RestaurantActivity.class);
+                i.putExtra("id", nearList.get(position).getId());
                 i.putExtra("name", nearList.get(position).getName());
                 i.putExtra("address", nearList.get(position).getAddress());
                 i.putExtra("image", nearList.get(position).getImage());

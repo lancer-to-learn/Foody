@@ -38,6 +38,8 @@ public class RestaurantActivity extends AppCompatActivity {
     ArrayList<Restaurant> nearList;
     NearRestaurantAdapter nearRestaurantAdapter;
     Database database;
+    int id;
+    int userId;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -46,6 +48,7 @@ public class RestaurantActivity extends AppCompatActivity {
         ScrollView container = (ScrollView) findViewById(R.id.container);
         getLayoutInflater().inflate(R.layout.restaurant, container);
 
+        userId = ((MyApplication) this.getApplication()).getuserId();
         map();
         dataInit();
 
@@ -121,6 +124,14 @@ public class RestaurantActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 img_saved.setImageResource(R.drawable.ic_saved_icon);
+
+                Cursor savedRestaurants = database.GetData("SELECT * FROM Saved_ress WHERE Id_user = "+ userId+" AND Id_res = "+ id+"");
+                if(savedRestaurants.getCount() == 0){
+                    database.QueryData("INSERT INTO Saved_ress VALUES(null, "+ id+", "+ userId+")");
+                    Toast.makeText(RestaurantActivity.this, "Saved", Toast.LENGTH_SHORT).show();
+                }
+                else
+                    Toast.makeText(RestaurantActivity.this, "This restaurant has already been saved!", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -173,7 +184,7 @@ public class RestaurantActivity extends AppCompatActivity {
 
         //Get restaurant info
         Intent intent = getIntent();
-        int id = intent.getIntExtra("id", 0);
+        id = intent.getIntExtra("id", 0);
         String name = intent.getStringExtra("name");
         int image = intent.getIntExtra("image", 0);
         String address = intent.getStringExtra("address");

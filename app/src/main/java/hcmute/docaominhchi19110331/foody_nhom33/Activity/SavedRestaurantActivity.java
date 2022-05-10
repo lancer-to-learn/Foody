@@ -1,6 +1,7 @@
 package hcmute.docaominhchi19110331.foody_nhom33.Activity;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -36,6 +37,7 @@ public class SavedRestaurantActivity extends AppCompatActivity {
     ArrayList<Restaurant> savedList;
     SavedRestaurantAdapter adapter;
     float rating = 4;
+    Database database;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -46,8 +48,9 @@ public class SavedRestaurantActivity extends AppCompatActivity {
 
         map();
 
+        savedList = new ArrayList<>();
         adapter = new SavedRestaurantAdapter(this, R.layout.restaurant_save, savedList);
-
+        dataInit();
         lv_saved.setAdapter(adapter);
 
         lv_saved.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -57,6 +60,7 @@ public class SavedRestaurantActivity extends AppCompatActivity {
                 String name = savedList.get(i).getName();
                 Intent intent1 = new Intent(getApplicationContext(), RestaurantActivity.class);
 
+                intent1.putExtra("id", savedList.get(i).getId());
                 intent1.putExtra("name", name);
                 intent1.putExtra("image", image);
                 intent1.putExtra("address", savedList.get(i).getAddress());
@@ -108,7 +112,6 @@ public class SavedRestaurantActivity extends AppCompatActivity {
 
     }
 
-
     private void map() {
         img_home = (ImageView) findViewById(R.id.home_icon);
         img_history = (ImageView) findViewById(R.id.history_icon);
@@ -116,12 +119,26 @@ public class SavedRestaurantActivity extends AppCompatActivity {
         img_notice = (ImageView) findViewById(R.id.img_notice);
 
         lv_saved = (ListView) findViewById(R.id.lv_saved_restaurant);
+    }
+    private void dataInit(){
+        database = new Database(this, "foody.sqlite", null, 1);
+        int userId = ((MyApplication) this.getApplication()).getuserId();
+        Cursor datasavedRestaurants = database.GetData("SELECT Id_res FROM Saved_ress WHERE Id_user = "+ userId+"");
+        savedList.clear();
+        while (datasavedRestaurants.moveToNext()){
+            int id_res = datasavedRestaurants.getInt(0);
 
-        savedList = new ArrayList<>();
+            Cursor dataRestaurants = database.GetData("SELECT * FROM Restaurants WHERE Id = "+ id_res+"");
+            while (dataRestaurants.moveToNext()){
+                int id = dataRestaurants.getInt(0);
+                String name = dataRestaurants.getString(1);
+                String address = dataRestaurants.getString(2);
+                int image = dataRestaurants.getInt(3);
 
-//        savedList.add(new Restaurant("Bún Chị Bảy", "123 Nguyễn Huệ", R.drawable.restaurant2));
-//        savedList.add(new Restaurant("Cơm sườn bì chả", "456 Võ Văn Kiệt", R.drawable.restaurant1));
-//        savedList.add(new Restaurant("Ăn vặt cô 3", "789 Võ Văn Ngân", R.drawable.restaurant));
+                savedList.add(new Restaurant(id, name, address,image));
+            }
+        }
+        adapter.notifyDataSetChanged();
     }
     private boolean checkUser(){
         return ((MyApplication) this.getApplication()).checkUser();

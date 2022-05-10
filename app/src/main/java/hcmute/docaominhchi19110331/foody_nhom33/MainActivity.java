@@ -10,16 +10,12 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import hcmute.docaominhchi19110331.foody_nhom33.Activity.Database;
 import hcmute.docaominhchi19110331.foody_nhom33.Activity.NoticeActivity;
@@ -181,8 +177,9 @@ public class MainActivity extends AppCompatActivity {
         recommended.setLayoutManager(layoutManager);
 
         databaseInit();
-//        dataDelete();
-//        dataInsert();
+
+        dataDelete(); //chạy 1 lần
+        dataInsert(); //chạy 1 lần
 
         getdataRestaurants();
         getdataFoods();
@@ -250,31 +247,33 @@ public class MainActivity extends AppCompatActivity {
     }
     private void dataInsert() {
         //Restaurants
-
-//        nearList.add(new Restaurant("Bún Chị Bảy", "123 Nguyễn Huệ", R.drawable.restaurant));
-//        nearList.add(new Restaurant("Cơm sườn bì chả", "456 Võ Văn Kiệt", R.drawable.restaurant1));
-//        nearList.add(new Restaurant("Ăn vặt cô 3", "789 Võ Văn Ngân", R.drawable.restaurant));
-//        restaurants.add(new Restaurant("BBQ Best Restaurant", "123 Dong Da, Ha Noi", R.drawable.restaurant1));
-//        restaurants2.add(new Restaurant("BBQ Good Restaurant", "456 Le Van Viet, Q9, TP. HCM", R.drawable.restaurant1));
-//        restaurants.add(new Restaurant("TeaMilk Best Restaurant", "789 Pham Van Dong, Q9, TP. HCM", R.drawable.restaurant1));
-//        restaurants2.add(new Restaurant("TeaMilk Good Restaurant", "1 Le Van Viet, Q9, TP. HCM", R.drawable.restaurant1));
-//        restaurants.add(new Restaurant("BBQ Best Restaurant", "123 Dong Da, Ha Noi", R.drawable.restaurant1));
-//        restaurants2.add(new Restaurant("BBQ Good Restaurant", "456 Le Van Viet, Q9, TP. HCM", R.drawable.restaurant1));
-//        restaurants.add(new Restaurant("TeaMilk Best Restaurant", "789 Pham Van Dong, Q9, TP. HCM", R.drawable.restaurant1));
-//        restaurants2.add(new Restaurant("TeaMilk Good Restaurant", "1 Le Van Viet, Q9, TP. HCM", R.drawable.restaurant1));
-        database.QueryData("INSERT INTO Restaurants VALUES(1, 'BBQ Best Restaurant', '123 Dong Da, Ha Noi', "+ R.drawable.restaurant1 +" )");
-        database.QueryData("INSERT INTO Restaurants VALUES(2, 'BBQ Best Restaurant', '123 Dong Da, Ha Noi', "+ R.drawable.restaurant1 +" )");
-        database.QueryData("INSERT INTO Restaurants VALUES(3, 'BBQ Best Restaurant', '123 Dong Da, Ha Noi', "+ R.drawable.restaurant1 +" )");
-        database.QueryData("INSERT INTO Restaurants VALUES(4, 'BBQ Best Restaurant', '123 Dong Da, Ha Noi', "+ R.drawable.restaurant1 +" )");
-        database.QueryData("INSERT INTO Restaurants VALUES(5, 'BBQ Best Restaurant', '123 Dong Da, Ha Noi', "+ R.drawable.restaurant1 +" )");
-        database.QueryData("INSERT INTO Restaurants VALUES(6, 'BBQ Best Restaurant', '123 Dong Da, Ha Noi', "+ R.drawable.restaurant1 +" )");
+        database.QueryData("INSERT INTO Restaurants VALUES(1, 'BBQ Best Restaurant', '123 Dong Da, Ha Noi', "+ R.drawable.bbqres +" )");
+        database.QueryData("INSERT INTO Restaurants VALUES(2, 'TeaMilk Best Restaurant', '1 Le Van Viet, Q9, TP. HCM', "+ R.drawable.restaurant6 +" )");
+        database.QueryData("INSERT INTO Restaurants VALUES(3, 'Bún Chị Bảy', '89 Phạm Văn Đồng, Q9, TP. HCM', "+ R.drawable.restaurant10+" )");
+        database.QueryData("INSERT INTO Restaurants VALUES(4, 'Cơm sườn bì chả', '456 Võ Văn Kiệt, Q10, TP. HCM', "+ R.drawable.restaurant7 +" )");
+        database.QueryData("INSERT INTO Restaurants VALUES(5, 'Ăn vặt cô 3', '256 Võ Văn Ngân, Thu Duc, TP. HCM', "+ R.drawable.restaurant9 +" )");
+        database.QueryData("INSERT INTO Restaurants VALUES(6, 'Cơm tấm', '341A QL 1A, Thu Duc, TP. HCM', "+ R.drawable.restaurant8 +" )");
+        database.QueryData("INSERT INTO Restaurants VALUES(7, 'Phở Ngon', '25 Võ Văn Ngân, Thu Duc, TP. HCM', "+ R.drawable.restaurant +" )");
+        database.QueryData("INSERT INTO Restaurants VALUES(8, 'Gà rán PopEye', '12 Võ Văn Ngân, Thu Duc, TP. HCM', "+ R.drawable.restaurant2 +" )");
+        database.QueryData("INSERT INTO Restaurants VALUES(9, 'Chè 4 mùa', '10 Trường Chinh, Q12, TP. HCM', "+ R.drawable.restaurant3 +" )");
+        database.QueryData("INSERT INTO Restaurants VALUES(10, 'Bánh mỳ', '14 Phạm Văn Đồng TP. HCM', "+ R.drawable.restaurant4 +" )");
 
         //Foods
 //        listFood.add(new Food("Kim chi", "100", R.drawable.kimchi));
 //        listFood.add(new Food("BeefSteak", "500", R.drawable.beefsteak));
 //        listFood.add(new Food("Bread", "200", R.drawable.bread));
-        database.QueryData("INSERT INTO Foods VALUES(1, 2, 'Cơm gà', 20, "+R.drawable.asiafood2+")");
-        database.QueryData("INSERT INTO Foods VALUES(2, 2, 'Beef Steak', 50, "+R.drawable.beefsteak+")");
+        database.QueryData("INSERT INTO Foods VALUES(1, 1, 'Cơm gà', 10, "+R.drawable.asiafood2+")");
+        database.QueryData("INSERT INTO Foods VALUES(2, 1, 'Beef Steak', 20, "+R.drawable.beefsteak+")");
+        database.QueryData("INSERT INTO Foods VALUES(3, 1, 'Cơm sườn', 30, "+R.drawable.food_com_suon+")");
+
+        database.QueryData("INSERT INTO Foods VALUES(4, 2, 'Pizza', 40, "+R.drawable.asiafood1+")");
+        database.QueryData("INSERT INTO Foods VALUES(5, 2, 'Bánh mỳ kẹp', 50, "+R.drawable.bread+")");
+        database.QueryData("INSERT INTO Foods VALUES(6, 2, 'Pizza việt quất', 60, "+R.drawable.food1+")");
+
+        database.QueryData("INSERT INTO Foods VALUES(7, 3, 'Phở bò', 70, "+R.drawable.food_noodle+")");
+        database.QueryData("INSERT INTO Foods VALUES(8, 3, 'Sallad', 80, "+R.drawable.food_salad+")");
+        database.QueryData("INSERT INTO Foods VALUES(9, 3, 'Cá hồi chiên', 90, "+R.drawable.food_salmon+")");
+
 
         //User
         database.QueryData("INSERT INTO Users VALUES(1, 'tuan@gmail.com', '123', 'Q12, Ho Chi Minh', 'Nguyen Anh Tuan', '0333912392')");
@@ -285,8 +284,11 @@ public class MainActivity extends AppCompatActivity {
 
         //Receipt
         database.QueryData("INSERT INTO Receipts_detail VALUES(null, 2, 2, 80, 1, 1, '10:00 AM 5/3/2022')");
-
         database.QueryData("INSERT INTO Receipts_detail VALUES(null, 2, 3, 150, 2, 2, '10:00 AM 5/3/2022')");
+
+        //Saved res
+        database.QueryData("INSERT INTO Saved_ress VALUES(null, 1, 1)");
+        database.QueryData("INSERT INTO Saved_ress VALUES(null, 2, 1)");
     }
     private void dataDelete() {
         //Restaurants
@@ -299,6 +301,8 @@ public class MainActivity extends AppCompatActivity {
         database.QueryData("DELETE FROM Comments");
         //Receipts
         database.QueryData("DELETE FROM Receipts_detail");
+        //Saved res
+        database.QueryData("DELETE FROM Saved_ress");
     }
     private void getdataRestaurants(){
         //LIMIT row_count OFFSET offset;
@@ -313,6 +317,18 @@ public class MainActivity extends AppCompatActivity {
             restaurants.add(new Restaurant(id, name, address,image));
         }
         adapter.notifyDataSetChanged();
+
+        dataRestaurants = database.GetData("SELECT * FROM Restaurants ORDER BY Id DESC LIMIT 5");
+        restaurants2.clear();
+        while (dataRestaurants.moveToNext()){
+            int id = dataRestaurants.getInt(0);
+            String name = dataRestaurants.getString(1);
+            String address = dataRestaurants.getString(2);
+            int image = dataRestaurants.getInt(3);
+
+            restaurants2.add(new Restaurant(id, name, address,image));
+        }
+        adapter1.notifyDataSetChanged();
     }
     private void getdataFoods(){
         Cursor dataFoods = database.GetData("SELECT * FROM Foods LIMIT 5");

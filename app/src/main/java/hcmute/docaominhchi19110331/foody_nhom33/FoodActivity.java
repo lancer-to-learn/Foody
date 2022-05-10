@@ -214,6 +214,7 @@ public class FoodActivity extends AppCompatActivity {
         while (dataComments.moveToNext()){
             int id = dataComments.getInt(0);
             int id_user = dataComments.getInt(2);
+
             Cursor datauserName = database.GetData("SELECT Name FROM Users WHERE Id = "+id_user+"");
             while (datauserName.moveToNext()){
                 name = datauserName.getString(0);

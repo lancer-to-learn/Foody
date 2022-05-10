@@ -86,6 +86,7 @@ public class UserInforActivity extends AppCompatActivity {
         img_history = (ImageView) findViewById(R.id.history_icon);
         img_profile = (ImageView) findViewById(R.id.profile_icon);
         img_notice = (ImageView) findViewById(R.id.img_notice);
+
         edt_username = (EditText) findViewById(R.id.edt_username);
         edt_email = (EditText) findViewById(R.id.edt_email_infor);
         edt_password = (EditText) findViewById(R.id.edt_password_infor);
@@ -98,6 +99,9 @@ public class UserInforActivity extends AppCompatActivity {
         edt_email.setText(email);
         edt_password.setText(password);
 
+        edt_username.setEnabled(false);
+        edt_email.setEnabled(false);
+        edt_password.setEnabled(false);
     }
     private boolean checkUser(){
         return ((MyApplication) this.getApplication()).checkUser();

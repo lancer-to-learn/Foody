@@ -92,7 +92,6 @@ public class OrderAdapter extends BaseAdapter {
                 Intent intent = new Intent(context, OrderActivity.class);
                 intent.putExtra("id", thisFood.getId());
                 intent.putExtra("name", thisFood.getName());
-                Log.d("name", thisFood.getName());
                 intent.putExtra("price", thisFood.getPrice());
                 intent.putExtra("image", thisFood.getImage());
                 context.startActivity(intent);

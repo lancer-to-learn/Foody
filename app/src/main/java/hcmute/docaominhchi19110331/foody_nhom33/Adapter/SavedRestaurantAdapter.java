@@ -85,11 +85,10 @@ public class SavedRestaurantAdapter extends BaseAdapter {
         }*/
 
         Restaurant restaurant = restaurantList.get(i);
-        viewHolder.txt_name1.setText(restaurant.getName());
-        viewHolder.txt_address1.setText(restaurant.getAddress());
+        viewHolder.txt_name1.setText(restaurant.getName().toString());
+        viewHolder.txt_address1.setText(restaurant.getAddress().toString());
         viewHolder.img_image1.setImageResource(restaurant.getImage());
         viewHolder.rb.setRating(4);
-
 
         return view;
     }
