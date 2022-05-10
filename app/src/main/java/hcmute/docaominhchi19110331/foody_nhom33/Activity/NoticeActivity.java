@@ -134,7 +134,7 @@ public class NoticeActivity extends AppCompatActivity {
                 food_name = dataFood.getString(0);
             }
             Log.d("name", ""+food_name);
-            list.add(new Notice("Đặt thành công " + food_name, time));
+            list.add(new Notice("Bạn đã đặt thành công " + food_name, time));
         }
     }
     private boolean checkUser(){

@@ -129,10 +129,10 @@ public class OrderActivity extends AppCompatActivity {
     }
     private Food getFood(){
         Intent intent = getIntent();
-        int id_food = intent.getIntExtra("id", 1);
+        int id_food = intent.getIntExtra("id", 0);
         String food_name = intent.getStringExtra("name");
-        int img = intent.getIntExtra("image", 1);
-        int price = intent.getIntExtra("price", 1);
+        int img = intent.getIntExtra("image", 0);
+        int price = intent.getIntExtra("price", 0);
         return new Food(id_food, 0, food_name, price, img);
     }
     /*private void map() {

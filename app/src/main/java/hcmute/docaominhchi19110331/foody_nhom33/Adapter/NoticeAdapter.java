@@ -1,6 +1,7 @@
 package hcmute.docaominhchi19110331.foody_nhom33.Adapter;
 
 import android.content.Context;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;

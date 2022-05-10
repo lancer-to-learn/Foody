@@ -181,8 +181,8 @@ public class MainActivity extends AppCompatActivity {
         recommended.setLayoutManager(layoutManager);
 
         databaseInit();
-        dataDelete();
-        dataInsert();
+//        dataDelete();
+//        dataInsert();
 
         getdataRestaurants();
         getdataFoods();

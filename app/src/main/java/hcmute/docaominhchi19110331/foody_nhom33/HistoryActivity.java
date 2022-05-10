@@ -102,7 +102,7 @@ public class HistoryActivity extends AppCompatActivity {
     }
     private void getdataReceipt(){
         int userId = ((MyApplication) this.getApplication()).getuserId();
-        Cursor dataReceitps = database.GetData("SELECT * FROM Receipts_detail WHERE Id_user = "+ userId+"");
+        Cursor dataReceitps = database.GetData("SELECT * FROM Receipts_detail WHERE Id_user = "+ userId+" ORDER BY Id DESC");
 //         WHERE Id_user = "+userId+"
         orders.clear();
         while (dataReceitps.moveToNext()){

@@ -24,7 +24,6 @@ public class OrderAdapter extends BaseAdapter {
     String name_res;
     int image, id_res;
     Database database;
-    Food thisFood;
 
     public OrderAdapter(Context context, int layout, List<Order> orderList) {
         this.context = context;
@@ -78,7 +77,8 @@ public class OrderAdapter extends BaseAdapter {
         }
 
         Order order = orderList.get(i);
-        dataInit(order.getId_food());
+//        Log.d("mytag", ""+ i + " " + order.getId_food());
+        Food thisFood = dataInit(order.getId_food());
 
         viewHolder.txt_food.setText(thisFood.getName());
         viewHolder.txt_price.setText(String.valueOf(order.getPrice_total()));
@@ -92,6 +92,7 @@ public class OrderAdapter extends BaseAdapter {
                 Intent intent = new Intent(context, OrderActivity.class);
                 intent.putExtra("id", thisFood.getId());
                 intent.putExtra("name", thisFood.getName());
+                Log.d("name", thisFood.getName());
                 intent.putExtra("price", thisFood.getPrice());
                 intent.putExtra("image", thisFood.getImage());
                 context.startActivity(intent);
@@ -100,11 +101,14 @@ public class OrderAdapter extends BaseAdapter {
         return view;
 
     }
-    private void dataInit(int id_food){
+    private Food dataInit(int id_food){
+//        Log.d("id", "" + id_food);
+        Food this_Food = new Food(0, 0, null, 0, 0);
         database = new Database(context, "foody.sqlite", null, 1);
-        Cursor dataFood = database.GetData("SELECT Name, Image, Price, Id_res FROM Foods WHERE Id = "+ id_food +" ORDER BY Id DESC");
+        Cursor dataFood = database.GetData("SELECT Name, Image, Price, Id_res FROM Foods WHERE Id = "+ id_food +"");
         while (dataFood.moveToNext()){
             String name = dataFood.getString(0);
+//            Log.d("name", ""+name);
             int image = dataFood.getInt(1);
             int price = dataFood.getInt(2);
             int id_res = dataFood.getInt(3);
@@ -114,7 +118,8 @@ public class OrderAdapter extends BaseAdapter {
                  name_res = dataRes.getString(0);
             }
 
-            thisFood = new Food(id_food, 0, name, price, image);
+            this_Food = new Food(id_food, 0, name, price, image);
         }
+        return this_Food;
     }
 }
