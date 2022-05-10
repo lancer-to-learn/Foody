@@ -4,10 +4,10 @@ public class Food {
     private int id;
     private int id_res;
     private String name;
-    private String price;
+    private int price;
     private int image;
 
-    public Food(int id, int id_res, String name, String price, int image) {
+    public Food(int id, int id_res, String name, int price, int image) {
         this.id = id;
         this.id_res = id_res;
         this.name = name;
@@ -39,11 +39,11 @@ public class Food {
         this.name = name;
     }
 
-    public String getPrice() {
+    public Integer getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 

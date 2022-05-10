@@ -146,10 +146,10 @@ public class RestaurantActivity extends AppCompatActivity {
             int id = dataFoods.getInt(0);
             int id_res = dataFoods.getInt(1);
             String name = dataFoods.getString(2);
-            String address = dataFoods.getString(3);
+            int price = dataFoods.getInt(3);
             int image = dataFoods.getInt(4);
 
-            listFood.add(new Food(id, id_res, name, address,image));
+            listFood.add(new Food(id, id_res, name, price,image));
         }
         adapter.notifyDataSetChanged();
     }

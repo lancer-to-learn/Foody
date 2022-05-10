@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RatingBar;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,6 +27,7 @@ public class FoodActivity extends AppCompatActivity {
 
     Button btn_order;
     ImageView img_home, img_history, img_profile, img_notice;
+    RatingBar rate_bar;
     RecyclerView in_food_recycle;
     ImageView img_food, btn_comment;
     TextView txt_food_name, txt_res_of_food, txt_description_food;
@@ -35,7 +37,8 @@ public class FoodActivity extends AppCompatActivity {
     ArrayList<Comment> commentList;
     ArrayList<Food> in_food_list;
     int REQUEST_CODE = 123;
-    String name_food, price, res;
+    String name_food, res;
+    int price;
     int image;
     int id;
     int id_res;
@@ -71,10 +74,10 @@ public class FoodActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(checkUser()) {
                     Intent intent = new Intent(getApplicationContext(), OrderActivity.class);
+                    intent.putExtra("id", id);
                     intent.putExtra("name", name_food);
                     intent.putExtra("image", image);
                     intent.putExtra("price", price);
-                    intent.putExtra("res", res);
                     startActivity(intent);
                 }
                 else{
@@ -140,10 +143,10 @@ public class FoodActivity extends AppCompatActivity {
             finish();
             startActivity(intent);
         }
-
     }
 
     private void map() {
+        rate_bar = (RatingBar) findViewById(R.id.rb_rate);
         btn_comment = (ImageView) findViewById(R.id.btn_comment_and_rate);
         in_food_recycle = (RecyclerView) findViewById(R.id.in_food_recycle);
         btn_order = (Button) findViewById(R.id.btn_ordering);
@@ -168,13 +171,15 @@ public class FoodActivity extends AppCompatActivity {
         id_res = intent.getIntExtra("id_res", 1);
         image = intent.getIntExtra("image", 0);
         name_food = intent.getStringExtra("name");
-        price = intent.getStringExtra("price");
+        price = intent.getIntExtra("price", 0);
         res = intent.getStringExtra("res");
+
         img_food.setImageResource(image);
         txt_food_name.setText(name_food);
-        btn_order.setText(price);
+        btn_order.setText(String.valueOf(price));
         txt_res_of_food.setText(res);
         txt_description_food.setText("Món ngon giá hạt dẻ");
+        rate_bar.setRating(3);
 
         //Set comment info
         adapter = new CommentAdapter(this, R.layout.comment, commentList);
@@ -195,10 +200,10 @@ public class FoodActivity extends AppCompatActivity {
             int id = dataFoods.getInt(0);
             int id_res = dataFoods.getInt(1);
             String name = dataFoods.getString(2);
-            String address = dataFoods.getString(3);
+            int price = dataFoods.getInt(3);
             int image = dataFoods.getInt(4);
 
-            in_food_list.add(new Food(id, id_res, name, address,image));
+            in_food_list.add(new Food(id, id_res, name, price,image));
         }
         inFoodAdapter.notifyDataSetChanged();
     }

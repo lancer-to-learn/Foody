@@ -41,9 +41,9 @@ public class HistoryActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         Intent intent = new Intent(getApplicationContext(), OrderActivity.class);
-                        intent.putExtra("name", orders.get(i).getFood().getName());
-                        intent.putExtra("price", orders.get(i).getFood().getPrice());
-                        intent.putExtra("image", orders.get(i).getFood().getImage());
+//                        intent.putExtra("name", orders.get(i).getFood().getName());
+//                        intent.putExtra("price", orders.get(i).getFood().getPrice());
+//                        intent.putExtra("image", orders.get(i).getFood().getImage());
                         intent.putExtra("quantity", orders.get(i).getQuantity());
                         startActivity(intent);
 

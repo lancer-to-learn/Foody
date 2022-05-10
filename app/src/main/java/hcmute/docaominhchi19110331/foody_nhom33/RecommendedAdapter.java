@@ -38,7 +38,7 @@ public class RecommendedAdapter extends RecyclerView.Adapter<RecommendedAdapter.
         holder.recommendedRating.setText("4.1");
         holder.recommendedCharges.setText("Free");
         holder.recommendedDeliveryTime.setText("30 mins");
-        holder.recommendedPrice.setText(recommendedList.get(position).getPrice());
+        holder.recommendedPrice.setText(recommendedList.get(position).getPrice().toString());
         holder.recommendedImage.setImageResource(recommendedList.get(position).getImage());
 
         //Glide.with(context).load(recommendedList.get(position).getImageUrl()).into(holder.recommendedImage);

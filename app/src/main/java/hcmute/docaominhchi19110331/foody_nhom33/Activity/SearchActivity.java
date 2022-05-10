@@ -79,11 +79,11 @@ public class SearchActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 int image = searchList.get(i).getImage();
                 String name = searchList.get(i).getName();
-                String address = searchList.get(i).getPrice();
+//                String address = searchList.get(i).getPrice();
                 Intent intent = new Intent(getApplicationContext(), FoodActivity.class);
                 intent.putExtra("image", image);
                 intent.putExtra("name", name);
-                intent.putExtra("address", address);
+//                intent.putExtra("address", address);
                 startActivity(intent);
             }
         });

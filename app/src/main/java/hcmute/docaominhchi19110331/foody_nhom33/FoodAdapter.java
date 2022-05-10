@@ -65,7 +65,7 @@ public class FoodAdapter extends BaseAdapter {
 
         Food food = foodList.get(i);
         viewHolder.txt_food.setText(food.getName());
-        viewHolder.txt_price.setText(food.getPrice());
+        viewHolder.txt_price.setText(food.getPrice().toString());
         viewHolder.img_food.setImageResource(food.getImage());
 
         return view;

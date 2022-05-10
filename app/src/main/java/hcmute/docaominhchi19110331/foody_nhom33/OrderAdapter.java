@@ -65,10 +65,10 @@ public class OrderAdapter extends BaseAdapter {
         }
 
         Order order = orderList.get(i);
-        viewHolder.txt_food.setText(order.getFood().getName());
-        viewHolder.txt_price.setText(order.getFood().getPrice());
-        viewHolder.img_food.setImageResource(order.getFood().getImage());
-        viewHolder.txt_quantity.setText(String.valueOf(order.getQuantity()));
+//        viewHolder.txt_food.setText(order.getFood().getName());
+//        viewHolder.txt_price.setText(order.getFood().getPrice());
+//        viewHolder.img_food.setImageResource(order.getFood().getImage());
+//        viewHolder.txt_quantity.setText(String.valueOf(order.getQuantity()));
 
         return view;
 

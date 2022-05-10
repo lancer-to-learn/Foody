@@ -29,6 +29,7 @@ public class OrderActivity extends AppCompatActivity {
     private TabLayout mTablayout;
     private ViewPager viewPager;
     ImageView img_home, img_history, img_profile, img_notice;
+    Food thisFood;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -42,7 +43,9 @@ public class OrderActivity extends AppCompatActivity {
         img_history = (ImageView) findViewById(R.id.history_icon);
         img_profile = (ImageView) findViewById(R.id.profile_icon);
         img_notice = (ImageView) findViewById(R.id.img_notice);
-        OrderPagerAdapter adapter = new OrderPagerAdapter(getSupportFragmentManager(), FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+
+        thisFood = getFood();
+        OrderPagerAdapter adapter = new OrderPagerAdapter(getSupportFragmentManager(), FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT, thisFood);
         viewPager.setAdapter(adapter);
 
         mTablayout.setupWithViewPager(viewPager);
@@ -123,6 +126,14 @@ public class OrderActivity extends AppCompatActivity {
     }
     private boolean checkUser(){
         return ((MyApplication) this.getApplication()).checkUser();
+    }
+    private Food getFood(){
+        Intent intent = getIntent();
+        int id_food = intent.getIntExtra("id", 1);
+        String food_name = intent.getStringExtra("name");
+        int img = intent.getIntExtra("image", 1);
+        int price = intent.getIntExtra("price", 1);
+        return new Food(id_food, 0, food_name, price, img);
     }
     /*private void map() {
         img_food = (ImageView) findViewById(R.id.img_food);
