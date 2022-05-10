@@ -3,6 +3,7 @@ package hcmute.docaominhchi19110331.foody_nhom33;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -52,8 +53,8 @@ public class HistoryActivity extends AppCompatActivity {
 //                        intent.putExtra("price", orders.get(i).getFood().getPrice());
 //                        intent.putExtra("image", orders.get(i).getFood().getImage());
                         intent.putExtra("quantity", orders.get(i).getQuantity());
+                        Log.d("mytag", "hello");
                         startActivity(intent);
-
                     }
                 });
             }

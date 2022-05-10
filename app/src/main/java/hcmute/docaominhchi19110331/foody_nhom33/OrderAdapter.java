@@ -17,6 +17,8 @@ public class OrderAdapter extends BaseAdapter {
     private Context context;
     private int layout;
     private List<Order> orderList;
+
+    String name_res;
     Database database;
     Food thisFood;
 
@@ -43,7 +45,7 @@ public class OrderAdapter extends BaseAdapter {
 
     private class ViewHolder {
         ImageView img_food;
-        TextView txt_food,  txt_price, txt_quantity;
+        TextView txt_food,  txt_price, txt_quantity, txt_address;
     }
 
     @Override
@@ -59,7 +61,7 @@ public class OrderAdapter extends BaseAdapter {
             viewHolder = new OrderAdapter.ViewHolder();
 
             viewHolder.txt_food = (TextView) view.findViewById(R.id.txt_ordered_food);
-            //viewHolder.txt_address= (TextView) view.findViewById(R.id.txt_description);
+            viewHolder.txt_address= (TextView) view.findViewById(R.id.txtRes);
             viewHolder.img_food = (ImageView) view.findViewById(R.id.img_ordered_food);
             viewHolder.txt_price = (TextView) view.findViewById(R.id.txt_ordered_price);
             viewHolder.txt_quantity = (TextView) view.findViewById(R.id.txt_ordered_quantity);
@@ -74,6 +76,7 @@ public class OrderAdapter extends BaseAdapter {
 
         viewHolder.txt_food.setText(thisFood.getName());
         viewHolder.txt_price.setText(String.valueOf(order.getPrice_total()));
+        viewHolder.txt_address.setText(name_res);
         viewHolder.img_food.setImageResource(thisFood.getImage());
         viewHolder.txt_quantity.setText(String.valueOf(order.getQuantity()));
 
@@ -82,10 +85,16 @@ public class OrderAdapter extends BaseAdapter {
     }
     private void dataInit(int id_food){
         database = new Database(context, "foody.sqlite", null, 1);
-        Cursor dataFood = database.GetData("SELECT Name, Image FROM Foods WHERE Id = "+ id_food +"");
+        Cursor dataFood = database.GetData("SELECT Name, Image, Id_res FROM Foods WHERE Id = "+ id_food +"");
         while (dataFood.moveToNext()){
             String name = dataFood.getString(0);
             int image = dataFood.getInt(1);
+            int id_res = dataFood.getInt(2);
+
+            Cursor dataRes = database.GetData("SELECT Name FROM Restaurants WHERE Id = "+ id_res +"");
+            while (dataRes.moveToNext()){
+                 name_res = dataRes.getString(0);
+            }
 
             thisFood = new Food(0, 0, name, 0, image);
         }
