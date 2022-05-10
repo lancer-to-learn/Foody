@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -109,8 +110,13 @@ public class MainActivity extends AppCompatActivity {
         img_history.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), HistoryActivity.class);
-                startActivity(intent);
+                if (checkUser()) {
+                    Intent intent = new Intent(getApplicationContext(), HistoryActivity.class);
+                    startActivity(intent);
+                }
+                else{
+                    Toast.makeText(MainActivity.this, "You have to login first!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -131,8 +137,13 @@ public class MainActivity extends AppCompatActivity {
         img_notice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), NoticeActivity.class);
-                startActivity(intent);
+                if (checkUser()) {
+                    Intent intent = new Intent(getApplicationContext(), NoticeActivity.class);
+                    startActivity(intent);
+                }
+                else {
+                    Toast.makeText(MainActivity.this, "You have to login first!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 

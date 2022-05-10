@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -57,8 +58,13 @@ public class LoginActivity extends AppCompatActivity {
         img_history.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), HistoryActivity.class);
-                startActivity(intent);
+                if(checkUser()) {
+                    Intent intent = new Intent(getApplicationContext(), HistoryActivity.class);
+                    startActivity(intent);
+                }
+                else{
+                    Toast.makeText(LoginActivity.this, "You have to login first!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -79,8 +85,13 @@ public class LoginActivity extends AppCompatActivity {
         img_notice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), NoticeActivity.class);
-                startActivity(intent);
+                if(checkUser()) {
+                    Intent intent = new Intent(getApplicationContext(), NoticeActivity.class);
+                    startActivity(intent);
+                }
+                else{
+                    Toast.makeText(LoginActivity.this, "You have to login first!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 

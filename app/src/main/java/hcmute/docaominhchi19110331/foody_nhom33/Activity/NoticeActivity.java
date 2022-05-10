@@ -60,8 +60,12 @@ public class NoticeActivity extends AppCompatActivity {
         img_history.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), HistoryActivity.class);
-                startActivity(intent);
+                if(checkUser()) {
+                    Intent intent = new Intent(getApplicationContext(), HistoryActivity.class);
+                    startActivity(intent);
+                }
+                else
+                    Toast.makeText(NoticeActivity.this, "You have to login first!", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -82,8 +86,13 @@ public class NoticeActivity extends AppCompatActivity {
         img_notice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), NoticeActivity.class);
-                startActivity(intent);
+                if(checkUser()) {
+                    Intent intent = new Intent(getApplicationContext(), NoticeActivity.class);
+                    startActivity(intent);
+                }
+                else{
+                    Toast.makeText(NoticeActivity.this, "You have to login first!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -108,7 +117,7 @@ public class NoticeActivity extends AppCompatActivity {
 
 
         list.add(new Notice("Bạn đã đặt thành công món Kim Chi", "10:00 AM 5/3/2022"));
-        list.add(new Notice("Bạn đã đặt thành công món BeefSteak", "4:20 PM 5/3/2022"));
+        list.add(new Notice("Bạn đã đặt thành công món Kim Chi", "4:20 PM 5/3/2022"));
 
     }
     private boolean checkUser(){

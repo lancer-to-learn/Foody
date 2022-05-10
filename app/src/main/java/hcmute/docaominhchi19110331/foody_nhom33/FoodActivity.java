@@ -94,8 +94,13 @@ public class FoodActivity extends AppCompatActivity {
         img_history.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), HistoryActivity.class);
-                startActivity(intent);
+                if (checkUser()) {
+                    Intent intent = new Intent(getApplicationContext(), HistoryActivity.class);
+                    startActivity(intent);
+                }
+                else{
+                    Toast.makeText(FoodActivity.this, "You have to login first!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -116,8 +121,13 @@ public class FoodActivity extends AppCompatActivity {
         img_notice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), NoticeActivity.class);
-                startActivity(intent);
+                if (checkUser()) {
+                    Intent intent = new Intent(getApplicationContext(), NoticeActivity.class);
+                    startActivity(intent);
+                }
+                else{
+                    Toast.makeText(FoodActivity.this, "You have to login first!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
